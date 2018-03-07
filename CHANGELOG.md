@@ -1,7 +1,33 @@
 # Change Log
-All notable changes to the "itunes-vscode" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### 0.4.0
 
-## [Unreleased]
-- Initial release
+#### Features
+
+* Repeat Button: All, One or Off
+
+### 0.3.0
+
+#### Changes
+* Reposition media controls
+
+### 0.2.0
+
+#### Features
+* Navigate to next track
+* Navigate to previous track
+* Open iTunes
+
+### 0.1.2
+
+#### Bugfixes
+* Show play/pause button when iTunes is offline or idle
+
+### 0.1.1
+
+#### Bugfixes
+* Bugfix: Start iTunes by starting `vscode`
+
+### 0.1.0
+
+* Initial release of itunes-vscode
