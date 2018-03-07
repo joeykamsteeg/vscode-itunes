@@ -57,12 +57,16 @@ export default class Player {
                                     this.playerButton.command = "itunes.play";
                                     break;
                             }
+
+                            this.playerButton.show();
                         })
                         .catch( () => {
                             this.statusBarItem.text = "$(mute) iTunes Idle";
+                            this.playerButton.hide();
                         });
                 }else{
                     this.statusBarItem.text = "$(mute) iTunes Offline";
+                    this.playerButton.hide();
                 }
             });
     }
