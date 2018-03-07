@@ -83,7 +83,7 @@ export default class Player {
     }
 
     public previousTrack(): void {
-
+        this.iTunes.previousTrack();
     }
 
     public dispose(): void {
