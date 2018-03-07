@@ -13,6 +13,9 @@ export default class Player {
     private nextTrackButton: StatusBarItem = null;
     private stateButton: StatusBarItem = null;
     private updateInterval: NodeJS.Timer;
+    private repeatButton: StatusBarItem = null;
+
+    private currentStatusIndex: number = 0;
 
     constructor() {
         Player.Instance = this;
@@ -32,6 +35,8 @@ export default class Player {
     }
 
     private createStatusBarItem(){
+        this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 0 );
+
         this.statusBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 2 );
         this.statusBarItem.command = "itunes.open";
         this.statusBarItem.show();
@@ -58,7 +63,10 @@ export default class Player {
                 if( app.appState === "running" ){
                     this.iTunes.getCurrentTrack()
                         .then( ( track: ITrack ) => {
-                            this.statusBarItem.text = `${ track.name } - ${ track.artist }`;
+                            if( track.artist != null && track.name != null ){
+                                const status = `${ track.name } - ${ track.artist }`;
+                                this.statusBarItem.text = status;
+                            }
                             
                             switch( track.state ){
                                 case "playing" :
@@ -70,6 +78,23 @@ export default class Player {
                                 case "stopped" :
                                     this.playerButton.text = "$(triangle-right)";
                                     this.playerButton.command = "itunes.play";
+                                    break;
+                            }
+
+                            switch( track.repeat ){
+                                case "all":
+                                    this.repeatButton.text = "$(sync) All";
+                                    this.repeatButton.command = "itunes.repeat.set.one";
+                                    break;
+
+                                case "one":
+                                    this.repeatButton.text = "$(sync) One";
+                                    this.repeatButton.command = "itunes.repeat.set.off";
+                                    break;
+
+                                case "off":
+                                    this.repeatButton.text = "$(sync) Off";
+                                    this.repeatButton.command = "itunes.repeat.set.all";
                                     break;
                             }
 
@@ -109,6 +134,10 @@ export default class Player {
         this.iTunes.previousTrack();
     }
 
+    public setRepeat( repeat: string ): void {
+        this.iTunes.setRepeat( repeat );
+    }
+
     public dispose(): void {
         this.statusBarItem.dispose();
         clearInterval( this.updateInterval );
@@ -118,11 +147,13 @@ export default class Player {
         this.previousTrackButton.show();
         this.playerButton.show();
         this.nextTrackButton.show();
+        this.repeatButton.show();
     }
 
     private hideMediaControls(): void {
         this.previousTrackButton.hide();
         this.playerButton.hide();
         this.nextTrackButton.hide();
+        this.repeatButton.show();
     }
 }

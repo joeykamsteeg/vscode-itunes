@@ -35,6 +35,15 @@
             },{
                 "command": "itunes.open",
                 "title":"iTunes: Show"
+            },{
+                "command":"itunes.repeat.set.one",
+                "title":"iTunes: Set repeat to one"
+            },{
+                "command":"itunes.repeat.set.all",
+                "title":"iTunes: Set repeat to all"
+            },{
+                "command":"itunes.repeat.set.off",
+                "title":"iTunes: Set repeat to off"
             }
         ]
     },

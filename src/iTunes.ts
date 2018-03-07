@@ -3,6 +3,7 @@ import * as util from "util";
 import { exec } from "child_process";
 import * as applescript from "applescript";
 import * as path from "path";
+import { window } from "vscode";
 
 export default class iTunes {
 
@@ -38,6 +39,18 @@ export default class iTunes {
         this.executeScript("open");
     }
 
+    public setRepeat( repeat: string ): void {
+        this.executeScript(`repeatSet${repeat}`)
+            .then( ( result ) => {
+                if( result == null ){
+                    window.showErrorMessage("Visual Studio Code hasn't access to Accessibilty of your macOS. Please enabled at System Preferences -> Security & Privacy");
+                }
+            })
+            .catch( () => {
+                window.showErrorMessage("Visual Studio Code hasn't access to Accessibilty of your macOS. Please enabled at System Preferences -> Security & Privacy");
+            });
+    }
+
     private executeScript( filename: string ) : Promise<{}>{
         return new Promise( ( resolve, reject ) => {
             let file = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
@@ -47,7 +60,10 @@ export default class iTunes {
                 }
 
                 if( result != null ){
-                    resolve( JSON.parse( result.toString() ) );
+                    try {
+                        const parsedString = JSON.parse( result.toString() );
+                        resolve( parsedString );
+                    }catch( exception ){ }
                 }else{
                     resolve({});
                 }

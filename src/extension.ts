@@ -29,12 +29,27 @@ export function activate(context: vscode.ExtensionContext) {
         player.open();
     });
 
+    const commandRepeatOne = vscode.commands.registerCommand("itunes.repeat.set.one", () => {
+        player.setRepeat("One");
+    });
+
+    const commandRepeatOff = vscode.commands.registerCommand("itunes.repeat.set.off", () => {
+        player.setRepeat("Off");
+    });
+
+    const commandRepeatAll = vscode.commands.registerCommand("itunes.repeat.set.all", () => {
+        player.setRepeat("All");
+    });
+
     context.subscriptions.push( player );
     context.subscriptions.push( commandPlay );
     context.subscriptions.push( commandPause );
     context.subscriptions.push( commandNextTrack );
     context.subscriptions.push( commandPreviousTrack );
     context.subscriptions.push( commandOpen );
+    context.subscriptions.push( commandRepeatOne );
+    context.subscriptions.push( commandRepeatOff );
+    context.subscriptions.push( commandRepeatAll );
 }
 
 // this method is called when your extension is deactivated
