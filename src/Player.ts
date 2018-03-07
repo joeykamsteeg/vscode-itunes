@@ -11,6 +11,7 @@ export default class Player {
     private playerButton: StatusBarItem = null;
     private previousTrackButton: StatusBarItem = null;
     private nextTrackButton: StatusBarItem = null;
+    private stateButton: StatusBarItem = null;
     private updateInterval: NodeJS.Timer;
 
     constructor() {
@@ -31,19 +32,24 @@ export default class Player {
     }
 
     private createStatusBarItem(){
-        this.statusBarItem = window.createStatusBarItem( StatusBarAlignment.Left );
+        this.statusBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 2 );
         this.statusBarItem.command = "itunes.open";
         this.statusBarItem.show();
-        
-        this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left );
+
+        this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
         this.previousTrackButton.text = "$(chevron-left)";
         this.previousTrackButton.command = "itunes.previousTrack";
 
-        this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left );
+        this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
 
-        this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left );
+        this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
         this.nextTrackButton.text = "$(chevron-right)";
         this.nextTrackButton.command = "itunes.nextTrack";
+
+        this.stateButton = window.createStatusBarItem( StatusBarAlignment.Left, 1 );
+        this.stateButton.text = "$(mute)";
+        this.stateButton.command = "itunes.open";
+        this.stateButton.show();
     }
 
     private updateStatusBarItem(){
@@ -52,7 +58,7 @@ export default class Player {
                 if( app.appState === "running" ){
                     this.iTunes.getCurrentTrack()
                         .then( ( track: ITrack ) => {
-                            this.statusBarItem.text = `$(unmute) ${ track.name } - ${ track.artist }`;
+                            this.statusBarItem.text = `${ track.name } - ${ track.artist }`;
                             
                             switch( track.state ){
                                 case "playing" :
@@ -67,14 +73,17 @@ export default class Player {
                                     break;
                             }
 
+                            this.stateButton.text = "$(unmute)";
                             this.showMediaControls();
                         })
                         .catch( () => {
-                            this.statusBarItem.text = "$(mute) iTunes Idle";
+                            this.statusBarItem.text = "iTunes Not Playing";
+                            this.stateButton.text = "$(mute)";
                             this.hideMediaControls();
                         });
                 }else{
-                    this.statusBarItem.text = "$(mute) iTunes Offline";
+                    this.statusBarItem.text = "iTunes Not Started";
+                    this.stateButton.text = "$(mute)";
                     this.hideMediaControls();
                 }
             });
