@@ -2,7 +2,7 @@
     "name": "itunes-vscode",
     "displayName": "itunes-vscode",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "publisher": "PsykoSoldi3r",
     "icon":"images/icon.png",
     "engines": {
@@ -37,13 +37,13 @@
                 "title":"iTunes: Show"
             },{
                 "command":"itunes.repeat.set.one",
-                "title":"iTunes: Set repeat to one"
+                "title":"iTunes: Set Repeat - One"
             },{
                 "command":"itunes.repeat.set.all",
-                "title":"iTunes: Set repeat to all"
+                "title":"iTunes: Set Repeat - All"
             },{
                 "command":"itunes.repeat.set.off",
-                "title":"iTunes: Set repeat to off"
+                "title":"iTunes: Set Repeat - Off"
             }
         ]
     },
