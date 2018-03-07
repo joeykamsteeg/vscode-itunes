@@ -2,7 +2,7 @@
 
 Control iTunes from within Visual Studio Code
 
-![](https://raw.githubusercontent.com/PsykoSoldi3r/vscode-itunes/master/images/screenshot-01.png)
+![](https://raw.githubusercontent.com/PsykoSoldi3r/vscode-itunes/master/images/screenshot-02.png)
 
 ## Features
 
@@ -14,6 +14,12 @@ Control iTunes from within Visual Studio Code
 * System: macOS
 
 ## Release Notes
+
+### 0.4.0
+
+#### Features
+
+* Repeat Button: All, One or Off
 
 ### 0.3.0
 
