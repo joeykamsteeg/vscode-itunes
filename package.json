@@ -2,7 +2,7 @@
     "name": "itunes-vscode",
     "displayName": "itunes-vscode",
     "description": "iTunes Player",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "publisher": "PsykoSoldi3r",
     "engines": {
         "vscode": "^1.5.0"

@@ -13,6 +13,10 @@ Control iTunes inside Visual Studio Code
 
 ## Release Notes
 
+### 0.1.2
+
+* Bugfix: Show play/pause button when iTunes is offline or idle
+
 ### 0.1.1
 
 * Bugfix: Start iTunes by starting `vscode`

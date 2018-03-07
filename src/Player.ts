@@ -39,7 +39,6 @@ export default class Player {
     private updateStatusBarItem(){
         this.iTunes.getAppState()
             .then( ( app: any ) => {
-                console.log( app.appState );
                 if( app.appState === "running" ){
                     this.iTunes.getCurrentTrack()
                         .then( ( track: ITrack ) => {
