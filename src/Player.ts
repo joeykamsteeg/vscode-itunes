@@ -9,6 +9,8 @@ export default class Player {
     private iTunes: iTunes;
     private statusBarItem: StatusBarItem = null;
     private playerButton: StatusBarItem = null;
+    private previousTrackButton: StatusBarItem = null;
+    private nextTrackButton: StatusBarItem = null;
     private updateInterval: NodeJS.Timer;
 
     constructor() {
@@ -30,10 +32,18 @@ export default class Player {
 
     private createStatusBarItem(){
         this.statusBarItem = window.createStatusBarItem( StatusBarAlignment.Left );
+        this.statusBarItem.command = "itunes.open";
         this.statusBarItem.show();
         
+        this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left );
+        this.previousTrackButton.text = "$(chevron-left)";
+        this.previousTrackButton.command = "itunes.previousTrack";
+
         this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left );
-        this.playerButton.show();
+
+        this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left );
+        this.nextTrackButton.text = "$(chevron-right)";
+        this.nextTrackButton.command = "itunes.nextTrack";
     }
 
     private updateStatusBarItem(){
@@ -57,17 +67,21 @@ export default class Player {
                                     break;
                             }
 
-                            this.playerButton.show();
+                            this.showMediaControls();
                         })
                         .catch( () => {
                             this.statusBarItem.text = "$(mute) iTunes Idle";
-                            this.playerButton.hide();
+                            this.hideMediaControls();
                         });
                 }else{
                     this.statusBarItem.text = "$(mute) iTunes Offline";
-                    this.playerButton.hide();
+                    this.hideMediaControls();
                 }
             });
+    }
+
+    public open(): void {
+        this.iTunes.open();
     }
 
     public play(): void {
@@ -89,5 +103,17 @@ export default class Player {
     public dispose(): void {
         this.statusBarItem.dispose();
         clearInterval( this.updateInterval );
+    }
+
+    private showMediaControls(): void {
+        this.previousTrackButton.show();
+        this.playerButton.show();
+        this.nextTrackButton.show();
+    }
+
+    private hideMediaControls(): void {
+        this.previousTrackButton.hide();
+        this.playerButton.hide();
+        this.nextTrackButton.hide();
     }
 }

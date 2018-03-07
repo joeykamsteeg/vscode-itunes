@@ -25,9 +25,16 @@ export function activate(context: vscode.ExtensionContext) {
         player.previousTrack();
     });
 
+    const commandOpen = vscode.commands.registerCommand("itunes.open", () => {
+        player.open();
+    });
+
     context.subscriptions.push( player );
     context.subscriptions.push( commandPlay );
     context.subscriptions.push( commandPause );
+    context.subscriptions.push( commandNextTrack );
+    context.subscriptions.push( commandPreviousTrack );
+    context.subscriptions.push( commandOpen );
 }
 
 // this method is called when your extension is deactivated

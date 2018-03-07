@@ -34,6 +34,10 @@ export default class iTunes {
         this.executeScript("previousTrack");
     }
 
+    public open(): void {
+        this.executeScript("open");
+    }
+
     private executeScript( filename: string ) : Promise<{}>{
         return new Promise( ( resolve, reject ) => {
             let file = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
