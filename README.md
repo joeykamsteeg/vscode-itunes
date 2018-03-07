@@ -9,10 +9,14 @@ Control iTunes inside Visual Studio Code
 
 ## Requirements
 
-Only works on macOS
+* System: macOS
 
 ## Release Notes
 
-### 1.0.0
+### 0.1.1
 
-Initial release of vscode-itunes
+* Bugfix: Start iTunes by starting `vscode`
+
+### 0.1.0
+
+* Initial release of vscode-itunes

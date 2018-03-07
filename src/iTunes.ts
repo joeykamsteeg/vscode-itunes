@@ -10,6 +10,10 @@ export default class iTunes {
 
     }
 
+    public getAppState(): Promise<{}> {
+        return this.executeScript("appState");
+    }
+
     public getCurrentTrack(): Promise<{}> {
         return this.executeScript("currentTrack");
     }

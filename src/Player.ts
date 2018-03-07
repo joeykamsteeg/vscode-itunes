@@ -37,21 +37,32 @@ export default class Player {
     }
 
     private updateStatusBarItem(){
-        this.iTunes.getCurrentTrack()
-            .then( ( track: ITrack ) => {
-                this.statusBarItem.text = `$(unmute) ${ track.name } - ${ track.artist }`;
-                
-                switch( track.state ){
-                    case "playing" :
-                        this.playerButton.text = "$(primitive-square)";
-                        this.playerButton.command = "itunes.pause";
-                        break;
-                    
-                    case "paused" :
-                    case "stopped" :
-                        this.playerButton.text = "$(triangle-right)";
-                        this.playerButton.command = "itunes.play";
-                        break;
+        this.iTunes.getAppState()
+            .then( ( app: any ) => {
+                console.log( app.appState );
+                if( app.appState === "running" ){
+                    this.iTunes.getCurrentTrack()
+                        .then( ( track: ITrack ) => {
+                            this.statusBarItem.text = `$(unmute) ${ track.name } - ${ track.artist }`;
+                            
+                            switch( track.state ){
+                                case "playing" :
+                                    this.playerButton.text = "$(primitive-square)";
+                                    this.playerButton.command = "itunes.pause";
+                                    break;
+                                
+                                case "paused" :
+                                case "stopped" :
+                                    this.playerButton.text = "$(triangle-right)";
+                                    this.playerButton.command = "itunes.play";
+                                    break;
+                            }
+                        })
+                        .catch( () => {
+                            this.statusBarItem.text = "$(mute) iTunes Idle";
+                        });
+                }else{
+                    this.statusBarItem.text = "$(mute) iTunes Offline";
                 }
             });
     }
