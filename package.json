@@ -21,10 +21,16 @@
         "commands": [
             {
                 "command": "itunes.pause",
-                "title": "iTunes Pause"
+                "title": "iTunes: Pause"
             },{
                 "command": "itunes.play",
-                "title": "iTunes Play"
+                "title": "iTunes: Play"
+            },{
+                "command": "itunes.nextTrack",
+                "title":"iTunes: Next Track"
+            },{
+                "command": "itunes.previousTrack",
+                "title":"iTunes: Previous Track"
             }
         ]
     },

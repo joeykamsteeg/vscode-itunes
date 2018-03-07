@@ -17,6 +17,14 @@ export function activate(context: vscode.ExtensionContext) {
         player.pause();
     });
 
+    const commandNextTrack = vscode.commands.registerCommand("itunes.nextTrack", () => {
+        player.nextTrack();
+    });
+
+    const commandPreviousTrack = vscode.commands.registerCommand("itunes.previousTrack", () => {
+        player.previousTrack();
+    });
+
     context.subscriptions.push( player );
     context.subscriptions.push( commandPlay );
     context.subscriptions.push( commandPause );

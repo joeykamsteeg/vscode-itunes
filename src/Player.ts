@@ -78,6 +78,14 @@ export default class Player {
         this.iTunes.pause();
     }
 
+    public nextTrack(): void {
+        this.iTunes.nextTrack();
+    }
+
+    public previousTrack(): void {
+
+    }
+
     public dispose(): void {
         this.statusBarItem.dispose();
         clearInterval( this.updateInterval );
