@@ -2,6 +2,8 @@
 
 Control iTunes from within Visual Studio Code
 
+![](https://raw.githubusercontent.com/PsykoSoldi3r/vscode-itunes/master/images/screenshot-01.png)
+
 ## Features
 
 * Display current playing song
@@ -12,6 +14,11 @@ Control iTunes from within Visual Studio Code
 * System: macOS
 
 ## Release Notes
+
+### 0.3.0
+
+#### Changes
+* Reposition media controls
 
 ### 0.2.0
 
