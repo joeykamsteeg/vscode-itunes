@@ -2,7 +2,7 @@
     "name": "itunes-vscode",
     "displayName": "itunes-vscode",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "publisher": "PsykoSoldi3r",
     "icon":"images/icon.png",
     "engines": {
@@ -44,6 +44,19 @@
             },{
                 "command":"itunes.repeat.set.off",
                 "title":"iTunes: Set Repeat - Off"
+            }
+        ],
+        "configuration":[
+            {
+                "title": "",
+                "type":"object",
+                "properties": {
+                    "itunes.updateInterval":{
+                        "type":"number",
+                        "default":5000,
+                        "description": "Interval of iTunes status check. (High value, lower CPU usage)"
+                    }
+                }
             }
         ]
     },

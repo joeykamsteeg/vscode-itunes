@@ -3,10 +3,12 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import Player from './Player';
+import Config from './Config';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+    const config = new Config();
     const player = new Player();
 
     const commandPlay = vscode.commands.registerCommand('itunes.play', () => {

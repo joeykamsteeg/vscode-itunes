@@ -1,6 +1,7 @@
 import { window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument } from "vscode";
 import iTunes from "./iTunes";
 import ITrack from "./ITrack";
+import Config from "./Config";
 
 export default class Player {
 
@@ -25,7 +26,7 @@ export default class Player {
         this.createStatusBarItem();
 
         this.onUpdate = this.onUpdate.bind( this );
-        this.updateInterval = setInterval( this.onUpdate, 1000 );
+        this.updateInterval = setInterval( this.onUpdate, Config.Instance.getStatusCheckInterval() );
 
         this.updateStatusBarItem();
     }
