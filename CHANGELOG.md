@@ -2,7 +2,7 @@
 
 ### 0.5.0
 #### Features
-* Added `status.updateInterval` for status checking ( default value: 5000 )
+* Added `itunes.updateInterval` for status checking ( default value: 5000 )
 
 ### 0.4.0
 
