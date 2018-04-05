@@ -3,4 +3,6 @@ export default interface ITrack {
     name: string;
     state: string;
     repeat: string;
+    muted: boolean;
+    volume: number;
 }

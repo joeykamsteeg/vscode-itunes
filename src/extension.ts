@@ -31,6 +31,10 @@ export function activate(context: vscode.ExtensionContext) {
         player.open();
     });
 
+    const commandVolume = vscode.commands.registerCommand("itunes.volume", () => {
+        player.volume();
+    });
+
     const commandRepeatOne = vscode.commands.registerCommand("itunes.repeat.set.one", () => {
         player.setRepeat("One");
     });
@@ -52,6 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push( commandRepeatOne );
     context.subscriptions.push( commandRepeatOff );
     context.subscriptions.push( commandRepeatAll );
+    context.subscriptions.push( commandVolume );
 }
 
 // this method is called when your extension is deactivated

@@ -54,7 +54,7 @@ export default class Player {
 
         this.stateButton = window.createStatusBarItem( StatusBarAlignment.Left, 1 );
         this.stateButton.text = "$(mute)";
-        this.stateButton.command = "itunes.open";
+        this.stateButton.command = "itunes.volume";
         this.stateButton.show();
     }
 
@@ -70,6 +70,12 @@ export default class Player {
 
                                 this.statusBarItem.show();
                                 this.stateButton.show();
+                            }
+
+                            if( track.volume >= 1 ){
+                                this.stateButton.text = "$(unmute)";
+                            }else{
+                                this.stateButton.text = "$(mute)";
                             }
                             
                             switch( track.state ){
@@ -102,17 +108,12 @@ export default class Player {
                                     break;
                             }
 
-                            this.stateButton.text = "$(unmute)";
                             this.showMediaControls();
                         })
                         .catch( () => {
-                            this.statusBarItem.hide();
-                            this.stateButton.hide();
                             this.hideMediaControls();
                         });
                 }else{
-                    this.statusBarItem.hide();
-                    this.stateButton.hide();
                     this.hideMediaControls();
                 }
             });
@@ -152,6 +153,8 @@ export default class Player {
         this.playerButton.show();
         this.nextTrackButton.show();
         this.repeatButton.show();
+        this.statusBarItem.show();
+        this.stateButton.show();
     }
 
     private hideMediaControls(): void {
@@ -159,5 +162,15 @@ export default class Player {
         this.playerButton.hide();
         this.nextTrackButton.hide();
         this.repeatButton.hide();
+        this.statusBarItem.hide();
+        this.stateButton.hide();
+    }
+
+    public volume(): void {
+        if( this.stateButton.text === "$(mute)"){
+            this.iTunes.unmute();
+        }else{
+            this.iTunes.mute();
+        }
     }
 }

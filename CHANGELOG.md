@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.7.0
+#### Changes
+* Mute/unmute sound when clicking on the volume indiciator button
+
 ### 0.6.0
 #### Changes
 * Hide text when iTunes is stopped and not opened

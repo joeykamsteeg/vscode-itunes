@@ -39,6 +39,14 @@ export default class iTunes {
         this.executeScript("open");
     }
 
+    public unmute(): void {
+        this.executeScript("unmute");
+    }
+
+    public mute(): void {
+        this.executeScript("mute");
+    }
+
     public setRepeat( repeat: string ): void {
         this.executeScript(`repeatSet${repeat}`)
             .then( ( result ) => {
