@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.6.0
+#### Changes
+* Hide text when iTunes is stopped and not opened
+
 ### 0.5.0
 #### Features
 * Added `itunes.updateInterval` for status checking ( default value: 5000 )

@@ -67,6 +67,9 @@ export default class Player {
                             if( track.artist != null && track.name != null ){
                                 const status = `${ track.name } - ${ track.artist }`;
                                 this.statusBarItem.text = status;
+
+                                this.statusBarItem.show();
+                                this.stateButton.show();
                             }
                             
                             switch( track.state ){
@@ -103,13 +106,13 @@ export default class Player {
                             this.showMediaControls();
                         })
                         .catch( () => {
-                            this.statusBarItem.text = "iTunes Not Playing";
-                            this.stateButton.text = "$(mute)";
+                            this.statusBarItem.hide();
+                            this.stateButton.hide();
                             this.hideMediaControls();
                         });
                 }else{
-                    this.statusBarItem.text = "iTunes Not Started";
-                    this.stateButton.text = "$(mute)";
+                    this.statusBarItem.hide();
+                    this.stateButton.hide();
                     this.hideMediaControls();
                 }
             });
@@ -155,6 +158,6 @@ export default class Player {
         this.previousTrackButton.hide();
         this.playerButton.hide();
         this.nextTrackButton.hide();
-        this.repeatButton.show();
+        this.repeatButton.hide();
     }
 }
