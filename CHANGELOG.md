@@ -1,7 +1,11 @@
 # Change Log
 
+### 0.7.1
+#### Added
+* Command itunes.volume
+
 ### 0.7.0
-#### Changes
+#### Added
 * Mute/unmute sound when clicking on the volume indiciator button
 
 ### 0.6.0
