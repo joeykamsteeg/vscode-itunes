@@ -7,7 +7,7 @@ Control iTunes from within Visual Studio Code
 ## Features
 
 * Display current playing song
-* Media controls: play, pause, next, previous
+* Media controls: play, pause, next, previous, repeat
 
 ## Requirements
 
