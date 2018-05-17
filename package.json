@@ -2,9 +2,9 @@
     "name": "itunes-vscode",
     "displayName": "itunes-vscode",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "publisher": "PsykoSoldi3r",
-    "icon":"images/icon.png",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -23,40 +23,48 @@
             {
                 "command": "itunes.pause",
                 "title": "iTunes: Pause"
-            },{
+            },
+            {
                 "command": "itunes.play",
                 "title": "iTunes: Play"
-            },{
+            },
+            {
                 "command": "itunes.nextTrack",
-                "title":"iTunes: Next Track"
-            },{
+                "title": "iTunes: Next Track"
+            },
+            {
                 "command": "itunes.previousTrack",
-                "title":"iTunes: Previous Track"
-            },{
+                "title": "iTunes: Previous Track"
+            },
+            {
                 "command": "itunes.open",
-                "title":"iTunes: Show"
-            },{
-                "command":"itunes.repeat.set.one",
-                "title":"iTunes: Set Repeat - One"
-            },{
-                "command":"itunes.repeat.set.all",
-                "title":"iTunes: Set Repeat - All"
-            },{
-                "command":"itunes.repeat.set.off",
-                "title":"iTunes: Set Repeat - Off"
-            },{
-                "command":"itunes.volume",
-                "title":"iTunes: Mute/Unmute"
+                "title": "iTunes: Show"
+            },
+            {
+                "command": "itunes.repeat.set.one",
+                "title": "iTunes: Set Repeat - One"
+            },
+            {
+                "command": "itunes.repeat.set.all",
+                "title": "iTunes: Set Repeat - All"
+            },
+            {
+                "command": "itunes.repeat.set.off",
+                "title": "iTunes: Set Repeat - Off"
+            },
+            {
+                "command": "itunes.volume",
+                "title": "iTunes: Mute/Unmute"
             }
         ],
-        "configuration":[
+        "configuration": [
             {
                 "title": "",
-                "type":"object",
+                "type": "object",
                 "properties": {
-                    "itunes.updateInterval":{
-                        "type":"number",
-                        "default":5000,
+                    "itunes.updateInterval": {
+                        "type": "number",
+                        "default": 5000,
                         "description": "Interval of iTunes status check. (High value, lower CPU usage)"
                     }
                 }
@@ -77,6 +85,7 @@
         "@types/mocha": "^2.2.32"
     },
     "dependencies": {
-        "applescript": "^1.0.0"
+        "applescript": "^1.0.0",
+        "hoek": "^5.0.3"
     }
 }
