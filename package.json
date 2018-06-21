@@ -2,7 +2,7 @@
     "name": "itunes-vscode",
     "displayName": "itunes-vscode",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.7.3",
+    "version": "0.8.0",
     "publisher": "PsykoSoldi3r",
     "icon": "images/icon.png",
     "engines": {
@@ -55,6 +55,14 @@
             {
                 "command": "itunes.volume",
                 "title": "iTunes: Mute/Unmute"
+            },
+            {
+                "command": "itunes.shuffle.on",
+                "title": "iTunes: Set Shuffle - On"
+            },
+            {
+                "command": "itunes.shuffle.off",
+                "title": "iTunes: Set Shuffle - Off"
             }
         ],
         "configuration": [
@@ -65,7 +73,7 @@
                     "itunes.updateInterval": {
                         "type": "number",
                         "default": 5000,
-                        "description": "Interval of iTunes status check. (High value, lower CPU usage)"
+                        "description": "Interval of iTunes status check. (Higher value = lower CPU usage)"
                     }
                 }
             }

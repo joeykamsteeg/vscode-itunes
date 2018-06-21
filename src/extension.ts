@@ -47,6 +47,14 @@ export function activate(context: vscode.ExtensionContext) {
         player.setRepeat("All");
     });
 
+    const commandShuffleOn = vscode.commands.registerCommand("itunes.shuffle.on", () => {
+        player.shuffleOn();
+    });
+
+    const commandShuffleOff = vscode.commands.registerCommand("itunes.shuffle.off", () => {
+        player.shuffleOff();
+    });
+
     context.subscriptions.push( player );
     context.subscriptions.push( commandPlay );
     context.subscriptions.push( commandPause );
@@ -57,6 +65,8 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push( commandRepeatOff );
     context.subscriptions.push( commandRepeatAll );
     context.subscriptions.push( commandVolume );
+    context.subscriptions.push( commandShuffleOn );
+    context.subscriptions.push( commandShuffleOff );
 }
 
 // this method is called when your extension is deactivated

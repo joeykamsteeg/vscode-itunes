@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.8.0
+### Added
+* Turn shuffle on or off
+* Tooltips
+
 ## v0.7.3
 ### Security
 * Updated dependecies with security vulnerability

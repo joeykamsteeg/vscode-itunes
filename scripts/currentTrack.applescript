@@ -6,6 +6,7 @@ if application "iTunes" is running then
 		set itrack to itrack & "\"state\": \"" & player state & "\","
 		set itrack to itrack & "\"volume\": \"" & sound volume & "\","
 		set itrack to itrack & "\"muted\": \"" & mute & "\","
+		set itrack to itrack & "\"shuffle\": \"" & shuffle enabled & "\","
 		set itrack to itrack & "\"repeat\": \"" & song repeat & "\""
 		set itrack to itrack & "}"
 		
