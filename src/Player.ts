@@ -1,4 +1,4 @@
-import { window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument } from "vscode";
+import { window, StatusBarAlignment, StatusBarItem } from "vscode";
 import iTunes from "./iTunes";
 import ITrack from "./ITrack";
 import Config from "./Config";

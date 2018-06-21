@@ -4,7 +4,7 @@
     "description": "Control iTunes from within Visual Studio Code!",
     "version": "0.7.0",
     "publisher": "PsykoSoldi3r",
-    "icon":"images/icon.png",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -23,37 +23,44 @@
             {
                 "command": "itunes.pause",
                 "title": "iTunes: Pause"
-            },{
+            },
+            {
                 "command": "itunes.play",
                 "title": "iTunes: Play"
-            },{
+            },
+            {
                 "command": "itunes.nextTrack",
-                "title":"iTunes: Next Track"
-            },{
+                "title": "iTunes: Next Track"
+            },
+            {
                 "command": "itunes.previousTrack",
-                "title":"iTunes: Previous Track"
-            },{
+                "title": "iTunes: Previous Track"
+            },
+            {
                 "command": "itunes.open",
-                "title":"iTunes: Show"
-            },{
-                "command":"itunes.repeat.set.one",
-                "title":"iTunes: Set Repeat - One"
-            },{
-                "command":"itunes.repeat.set.all",
-                "title":"iTunes: Set Repeat - All"
-            },{
-                "command":"itunes.repeat.set.off",
-                "title":"iTunes: Set Repeat - Off"
+                "title": "iTunes: Show"
+            },
+            {
+                "command": "itunes.repeat.set.one",
+                "title": "iTunes: Set Repeat - One"
+            },
+            {
+                "command": "itunes.repeat.set.all",
+                "title": "iTunes: Set Repeat - All"
+            },
+            {
+                "command": "itunes.repeat.set.off",
+                "title": "iTunes: Set Repeat - Off"
             }
         ],
-        "configuration":[
+        "configuration": [
             {
                 "title": "",
-                "type":"object",
+                "type": "object",
                 "properties": {
-                    "itunes.updateInterval":{
-                        "type":"number",
-                        "default":5000,
+                    "itunes.updateInterval": {
+                        "type": "number",
+                        "default": 5000,
                         "description": "Interval of iTunes status check. (High value, lower CPU usage)"
                     }
                 }
@@ -67,11 +74,11 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
+        "@types/mocha": "^2.2.32",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "mocha": "^5.2.0",
+        "typescript": "^2.0.3",
+        "vscode": "^1.1.18"
     },
     "dependencies": {
         "applescript": "^1.0.0"
