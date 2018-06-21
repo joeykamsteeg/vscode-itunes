@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8.1
+### Changes
+* Updated README.md
+
 ## v0.8.0
 ### Added
 * Turn shuffle on or off
