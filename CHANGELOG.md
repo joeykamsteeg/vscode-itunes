@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.7.3
+### Security
+* Updated dependecies with security vulnerability
+
 ## v0.7.2
 ### Security
 * Updated dependecies with security vulnerability
