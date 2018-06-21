@@ -2,7 +2,7 @@
 
 ## v0.8.1
 ### Changes
-* Updated README.md
+* Updated [README.md](https://github.com/PsykoSoldi3r/vscode-itunes/blob/master/README.md)
 
 ## v0.8.0
 ### Added

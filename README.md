@@ -1,6 +1,6 @@
 # itunes-vscode README
 
-Control iTunes from within Visual Studio Code
+Control iTunes From Within With Visual Studio Code
 
 ![](https://raw.githubusercontent.com/PsykoSoldi3r/vscode-itunes/master/images/screenshot-03.png)
 
