@@ -46,16 +46,24 @@ export default class iTunes {
     public mute(): void {
         this.executeScript("mute");
     }
+    
+    public shuffle( enable: boolean ): void {
+        if( enable === true ) {
+            this.executeScript("shuffleOn");
+        } else {
+            this.executeScript("shuffleOff");
+        }
+    }
 
     public setRepeat( repeat: string ): void {
         this.executeScript(`repeatSet${repeat}`)
             .then( ( result ) => {
                 if( result == null ){
-                    window.showErrorMessage("Visual Studio Code hasn't access to Accessibilty of your macOS. Please enabled at System Preferences -> Security & Privacy");
+                    window.showErrorMessage("Visual Studio Code hasn't access to Accessibilty of your macOS. Please enable at System Preferences -> Security & Privacy");
                 }
             })
             .catch( () => {
-                window.showErrorMessage("Visual Studio Code hasn't access to Accessibilty of your macOS. Please enabled at System Preferences -> Security & Privacy");
+                window.showErrorMessage("Visual Studio Code hasn't access to Accessibilty of your macOS. Please enable at System Preferences -> Security & Privacy");
             });
     }
 

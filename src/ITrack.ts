@@ -5,4 +5,5 @@ export default interface ITrack {
     repeat: string;
     muted: boolean;
     volume: number;
+    shuffle: any;
 }

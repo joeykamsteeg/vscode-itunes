@@ -15,9 +15,10 @@ export default class Player {
     private stateButton: StatusBarItem = null;
     private updateInterval: NodeJS.Timer;
     private repeatButton: StatusBarItem = null;
+    private shuffleButton: StatusBarItem = null;
 
-    private currentStatusIndex: number = 0;
-
+    private displayedError: boolean = false;
+    
     constructor() {
         Player.Instance = this;
 
@@ -36,6 +37,9 @@ export default class Player {
     }
 
     private createStatusBarItem(){
+        this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 0 );
+        this.shuffleButton.tooltip = "Turn shuffle on or off";
+
         this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 0 );
 
         this.statusBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 2 );
@@ -108,9 +112,24 @@ export default class Player {
                                     break;
                             }
 
+                            if( track.shuffle === "true" ) {
+                                this.shuffleButton.text = "$(git-compare) On";
+                                this.shuffleButton.command = "itunes.shuffle.off";
+                            } else {
+                                this.shuffleButton.text = "$(git-compare) Off";
+                                this.shuffleButton.command = "itunes.shuffle.on";
+                            }
+
                             this.showMediaControls();
                         })
-                        .catch( () => {
+                        .catch( ( err ) => {
+                            if( this.displayedError === false ){
+                                window.showErrorMessage(`Error occured: ${err}`)
+                                    .then( () => {
+                                        this.displayedError = false;
+                                    });
+                                this.displayedError = true;
+                            }
                             this.hideMediaControls();
                         });
                 }else{
@@ -139,6 +158,14 @@ export default class Player {
         this.iTunes.previousTrack();
     }
 
+    public shuffleOn(): void {
+        this.iTunes.shuffle( true );
+    }
+    
+    public shuffleOff(): void {
+        this.iTunes.shuffle( false );
+    }
+
     public setRepeat( repeat: string ): void {
         this.iTunes.setRepeat( repeat );
     }
@@ -155,6 +182,7 @@ export default class Player {
         this.repeatButton.show();
         this.statusBarItem.show();
         this.stateButton.show();
+        this.shuffleButton.show();
     }
 
     private hideMediaControls(): void {
@@ -164,6 +192,7 @@ export default class Player {
         this.repeatButton.hide();
         this.statusBarItem.hide();
         this.stateButton.hide();
+        this.shuffleButton.hide();
     }
 
     public volume(): void {
