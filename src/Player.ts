@@ -38,23 +38,24 @@ export default class Player {
 
     private createStatusBarItem(){
         this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 0 );
-        this.shuffleButton.tooltip = "Turn shuffle on or off";
-
         this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 0 );
 
         this.statusBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 2 );
         this.statusBarItem.command = "itunes.open";
+        this.statusBarItem.tooltip = "Show iTunes";
         this.statusBarItem.show();
 
         this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
         this.previousTrackButton.text = "$(chevron-left)";
         this.previousTrackButton.command = "itunes.previousTrack";
+        this.previousTrackButton.tooltip = "Play Previous Track";
 
         this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
 
         this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
         this.nextTrackButton.text = "$(chevron-right)";
         this.nextTrackButton.command = "itunes.nextTrack";
+        this.nextTrackButton.tooltip = "Play Next Track";
 
         this.stateButton = window.createStatusBarItem( StatusBarAlignment.Left, 1 );
         this.stateButton.text = "$(mute)";
@@ -78,20 +79,24 @@ export default class Player {
 
                             if( track.volume >= 1 ){
                                 this.stateButton.text = "$(unmute)";
+                                this.stateButton.tooltip = "Mute Volume";
                             }else{
                                 this.stateButton.text = "$(mute)";
+                                this.stateButton.tooltip = "Unmute Volume";
                             }
                             
                             switch( track.state ){
                                 case "playing" :
                                     this.playerButton.text = "$(primitive-square)";
                                     this.playerButton.command = "itunes.pause";
+                                    this.playerButton.tooltip = "Pause Track";
                                     break;
                                 
                                 case "paused" :
                                 case "stopped" :
                                     this.playerButton.text = "$(triangle-right)";
                                     this.playerButton.command = "itunes.play";
+                                    this.playerButton.tooltip = "Play Track";
                                     break;
                             }
 
@@ -115,9 +120,11 @@ export default class Player {
                             if( track.shuffle === "true" ) {
                                 this.shuffleButton.text = "$(git-compare) On";
                                 this.shuffleButton.command = "itunes.shuffle.off";
+                                this.shuffleButton.tooltip = "Turn Shuffle Off";
                             } else {
                                 this.shuffleButton.text = "$(git-compare) Off";
                                 this.shuffleButton.command = "itunes.shuffle.on";
+                                this.shuffleButton.tooltip = "Turn Shuffle On";
                             }
 
                             this.showMediaControls();
