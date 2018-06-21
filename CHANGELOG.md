@@ -1,45 +1,51 @@
-# Change Log
+# Changelog
 
-### 0.7.0
-#### Changes
+## v0.7.3
+### Security
+* Updated dependecies with security vulnerability
+
+## v0.7.2
+### Security
+* Updated dependecies with security vulnerability
+
+## v0.7.1
+### Added
+* Command itunes.volume
+
+## v0.7.0
+### Added
 * Mute/unmute sound when clicking on the volume indiciator button
 
-### 0.6.0
-#### Changes
+## v0.6.0
+### Changes
 * Hide text when iTunes is stopped and not opened
 
-### 0.5.0
-#### Features
-* Added `itunes.updateInterval` for status checking ( default value: 5000 )
+## v0.5.0
+### Added
+* `itunes.updateInterval` for status checking ( default value: 5000 )
 
-### 0.4.0
-
-#### Features
-
+## v0.4.0
+### Added
 * Repeat Button: All, One or Off
 
-### 0.3.0
-
-#### Changes
+## v0.3.0
+### Changes
 * Reposition media controls
 
-### 0.2.0
-
-#### Features
+## v0.2.0
+### Added
 * Navigate to next track
 * Navigate to previous track
 * Open iTunes
 
-### 0.1.2
-
-#### Bugfixes
+## v0.1.2
+### Added
 * Show play/pause button when iTunes is offline or idle
 
-### 0.1.1
-
-#### Bugfixes
+## v0.1.1
+### Bugfixes
 * Bugfix: Start iTunes by starting `vscode`
 
-### 0.1.0
+## v0.1.0
 
 * Initial release of itunes-vscode
