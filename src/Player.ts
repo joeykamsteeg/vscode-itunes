@@ -130,14 +130,6 @@ export default class Player {
                             this.showMediaControls();
                         })
                         .catch( ( err ) => {
-                            if( this.displayedError === false ){
-                                window.showErrorMessage(`Error occured: ${err}`)
-                                    .then( () => {
-                                        this.displayedError = false;
-                                    });
-                                this.displayedError = true;
-                            }
-                            this.hideMediaControls();
                         });
                 }else{
                     this.hideMediaControls();
