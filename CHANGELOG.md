@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8.3
+### Bugfixes
+* Don't display (non breaking) errors ([#6](https://github.com/PsykoSoldi3r/vscode-itunes/issues/6))
+
 ## v0.8.1
 ### Changes
 * Updated [README.md](https://github.com/PsykoSoldi3r/vscode-itunes/blob/master/README.md)
