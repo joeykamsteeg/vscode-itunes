@@ -7,6 +7,9 @@ Control iTunes From Within With Visual Studio Code
 ## Features
 
 * Display Current Playing Track
+    * Track
+    * Artist
+    * Podcast Title
 * Media controls
     * Previous Track
     * Play/Pause Track
