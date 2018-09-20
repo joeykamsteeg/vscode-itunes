@@ -1,6 +1,6 @@
 import { window, StatusBarAlignment, StatusBarItem } from "vscode";
 import iTunes from "./iTunes";
-import ITrack from "./ITrack";
+import ITrack, { MediaType } from "./ITrack";
 import Config from "./Config";
 
 export default class Player {
@@ -175,7 +175,7 @@ export default class Player {
         return `${ name } - ${ artist } - ${ album }`;
     }
 
-    private updateStatusText( artist: string, name: string, album: string, kind: string ) {
+    private updateStatusText( artist: string, name: string, album: string, kind: MediaType ) {
         this.titleBarItem.show();
         this.artistBarItem.show();
         this.albumBarItem.show();

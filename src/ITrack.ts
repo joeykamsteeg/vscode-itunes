@@ -1,3 +1,5 @@
+export declare type MediaType = "alert tone" | "audiobook" | "book" | "‌home video" | "iTunesU" | "movie" | "song" | "music video" | "podcast" | "ringtone" | "TV show" | "voice memo" | "unknown";
+
 export default interface ITrack {
     artist: string;
     name: string;
@@ -7,5 +9,5 @@ export default interface ITrack {
     volume: number;
     shuffle: any;
     album: string;
-    kind: string;
+    kind: MediaType;
 }
