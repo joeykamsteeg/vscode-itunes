@@ -172,7 +172,6 @@ export default class Player {
             status += album;
         }
         return status;
-        return `${ name } - ${ artist } - ${ album }`;
     }
 
     private updateStatusText( artist: string, name: string, album: string, kind: MediaType ) {
