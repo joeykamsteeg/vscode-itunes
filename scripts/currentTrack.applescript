@@ -3,6 +3,8 @@ if application "iTunes" is running then
 		set itrack to "{"
 		set itrack to itrack & "\"artist\": \"" & artist of current track & "\","
 		set itrack to itrack & "\"name\": \"" & name of current track & "\","
+		set itrack to itrack & "\"album\": \"" & album of current track & "\","
+		set itrack to itrack & "\"kind\": \"" & media kind of current track & "\","
 		set itrack to itrack & "\"state\": \"" & player state & "\","
 		set itrack to itrack & "\"volume\": \"" & sound volume & "\","
 		set itrack to itrack & "\"muted\": \"" & mute & "\","
