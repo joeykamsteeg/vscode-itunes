@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9
+### Added
+* Display podcast title
+
 ## v0.8.3
 ### Bugfixes
 * Don't display (non breaking) errors ([#6](https://github.com/PsykoSoldi3r/vscode-itunes/issues/6))
