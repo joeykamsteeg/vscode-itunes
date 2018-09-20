@@ -8,7 +8,9 @@ export default class Player {
     public static Instance: Player;
 
     private iTunes: iTunes;
-    private statusBarItem: StatusBarItem = null;
+    private titleBarItem: StatusBarItem = null;
+    private artistBarItem: StatusBarItem = null;
+    private albumBarItem: StatusBarItem = null;
     private playerButton: StatusBarItem = null;
     private previousTrackButton: StatusBarItem = null;
     private nextTrackButton: StatusBarItem = null;
@@ -17,7 +19,7 @@ export default class Player {
     private repeatButton: StatusBarItem = null;
     private shuffleButton: StatusBarItem = null;
 
-    private displayedError: boolean = false;
+    private statusBarPositionOffset: number = 10;
     
     constructor() {
         Player.Instance = this;
@@ -37,30 +39,40 @@ export default class Player {
     }
 
     private createStatusBarItem(){
-        this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 0 );
-        this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 0 );
-
-        this.statusBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 2 );
-        this.statusBarItem.command = "itunes.open";
-        this.statusBarItem.tooltip = "Show iTunes";
-        this.statusBarItem.show();
-
-        this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
+        this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 13 + this.statusBarPositionOffset );
         this.previousTrackButton.text = "$(chevron-left)";
         this.previousTrackButton.command = "itunes.previousTrack";
         this.previousTrackButton.tooltip = "Play Previous Track";
 
-        this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
+        this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left, 12 + this.statusBarPositionOffset );
 
-        this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 3 );
+        this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 11 + this.statusBarPositionOffset );
         this.nextTrackButton.text = "$(chevron-right)";
         this.nextTrackButton.command = "itunes.nextTrack";
         this.nextTrackButton.tooltip = "Play Next Track";
 
-        this.stateButton = window.createStatusBarItem( StatusBarAlignment.Left, 1 );
+        this.artistBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 9 + this.statusBarPositionOffset );
+        this.artistBarItem.command = "itunes.open";
+        this.artistBarItem.tooltip = "Show iTunes";
+        this.artistBarItem.show();
+
+        this.titleBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 10 + this.statusBarPositionOffset );
+        this.titleBarItem.command = "itunes.open";
+        this.titleBarItem.tooltip = "Show iTunes";
+        this.titleBarItem.show();
+
+        this.albumBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 8 + this.statusBarPositionOffset );
+        this.albumBarItem.command = "itunes.open";
+        this.albumBarItem.tooltip = "Show iTunes";
+        this.albumBarItem.show();
+
+        this.stateButton = window.createStatusBarItem( StatusBarAlignment.Left, 7 + this.statusBarPositionOffset );
         this.stateButton.text = "$(mute)";
         this.stateButton.command = "itunes.volume";
         this.stateButton.show();
+
+        this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 6 + this.statusBarPositionOffset );
+        this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 5 + this.statusBarPositionOffset );
     }
 
     private updateStatusBarItem(){
@@ -70,10 +82,11 @@ export default class Player {
                     this.iTunes.getCurrentTrack()
                         .then( ( track: ITrack ) => {
                             if( track.artist != null && track.name != null ){
-                                const status = `${ track.name } - ${ track.artist }`;
-                                this.statusBarItem.text = status;
+                                this.titleBarItem.text = this.getStatusText( track.artist, track.name, track.album );
 
-                                this.statusBarItem.show();
+                                this.updateStatusText( track.artist, track.name, track.album );
+
+                                this.titleBarItem.show();
                                 this.stateButton.show();
                             }
 
@@ -137,6 +150,59 @@ export default class Player {
             });
     }
 
+    private getStatusText( artist: string, name: string, album: string ): string {
+        let status = ""; 
+        if( name.length > 0 ) {
+            status += name;
+        }
+
+        if( artist.length > 0 ) {
+            if( status.length > 0 ){
+                status += " - ";
+            }
+
+            status += artist;
+        }
+
+        if( album.length > 0 && artist !== album ) {
+            if( status.length > 0 ){
+                status += " - ";
+            }
+
+            status += album;
+        }
+        return status;
+        return `${ name } - ${ artist } - ${ album }`;
+    }
+
+    private updateStatusText( artist: string, name: string, album: string ) {
+        this.titleBarItem.show();
+        this.artistBarItem.show();
+        this.albumBarItem.show();
+
+        const albumText = ( name.length > 0 || artist.length > 0 ) ? `-     ${album}` : album;
+        
+        this.titleBarItem.text = name;
+        this.albumBarItem.text = albumText;
+        this.artistBarItem.text = name.length > 0 ? `-     ${artist}` : artist;
+
+        if( name.length === 0 ) {
+            this.titleBarItem.hide();
+        }
+
+        if( album.length=== 0 ) {
+            this.albumBarItem.hide();
+        }
+
+        if( artist.length === 0 ) {
+            this.artistBarItem.hide();
+        }
+
+        if( artist === album ) {
+            this.albumBarItem.hide();
+        }
+    }
+
     public open(): void {
         this.iTunes.open();
     }
@@ -170,7 +236,7 @@ export default class Player {
     }
 
     public dispose(): void {
-        this.statusBarItem.dispose();
+        this.titleBarItem.dispose();
         clearInterval( this.updateInterval );
     }
 
@@ -179,7 +245,7 @@ export default class Player {
         this.playerButton.show();
         this.nextTrackButton.show();
         this.repeatButton.show();
-        this.statusBarItem.show();
+        this.titleBarItem.show();
         this.stateButton.show();
         this.shuffleButton.show();
     }
@@ -189,7 +255,7 @@ export default class Player {
         this.playerButton.hide();
         this.nextTrackButton.hide();
         this.repeatButton.hide();
-        this.statusBarItem.hide();
+        this.titleBarItem.hide();
         this.stateButton.hide();
         this.shuffleButton.hide();
     }

@@ -6,4 +6,5 @@ export default interface ITrack {
     muted: boolean;
     volume: number;
     shuffle: any;
+    album: string;
 }
