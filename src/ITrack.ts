@@ -7,4 +7,5 @@ export default interface ITrack {
     volume: number;
     shuffle: any;
     album: string;
+    kind: string;
 }

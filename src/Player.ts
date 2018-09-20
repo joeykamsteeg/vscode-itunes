@@ -84,7 +84,7 @@ export default class Player {
                             if( track.artist != null && track.name != null ){
                                 this.titleBarItem.text = this.getStatusText( track.artist, track.name, track.album );
 
-                                this.updateStatusText( track.artist, track.name, track.album );
+                                this.updateStatusText( track.artist, track.name, track.album, track.kind );
 
                                 this.titleBarItem.show();
                                 this.stateButton.show();
@@ -175,7 +175,7 @@ export default class Player {
         return `${ name } - ${ artist } - ${ album }`;
     }
 
-    private updateStatusText( artist: string, name: string, album: string ) {
+    private updateStatusText( artist: string, name: string, album: string, kind: string ) {
         this.titleBarItem.show();
         this.artistBarItem.show();
         this.albumBarItem.show();
@@ -185,6 +185,10 @@ export default class Player {
         this.titleBarItem.text = name;
         this.albumBarItem.text = albumText;
         this.artistBarItem.text = name.length > 0 ? `-     ${artist}` : artist;
+
+        if( kind !== "podcast" ) {
+            this.albumBarItem.hide();
+        }
 
         if( name.length === 0 ) {
             this.titleBarItem.hide();
