@@ -2,6 +2,7 @@ import { window, StatusBarAlignment, StatusBarItem } from "vscode";
 import iTunes from "./iTunes";
 import ITrack, { MediaType } from "./ITrack";
 import Config from "./Config";
+import TrackFactory from "./Factories/TrackFactory";
 
 export default class Player {
 
@@ -80,7 +81,9 @@ export default class Player {
             .then( ( app: any ) => {
                 if( app.appState === "running" ){
                     this.iTunes.getCurrentTrack()
-                        .then( ( track: ITrack ) => {
+                        .then( ( track: any ) => {
+                            track = TrackFactory.create( track );
+
                             if( track.artist != null && track.name != null ){
                                 this.titleBarItem.text = this.getStatusText( track.artist, track.name, track.album );
 
@@ -90,7 +93,7 @@ export default class Player {
                                 this.stateButton.show();
                             }
 
-                            if( track.volume >= 1 ){
+                            if( parseFloat( track.volume ) >= 1 ){
                                 this.stateButton.text = "$(unmute)";
                                 this.stateButton.tooltip = "Mute Volume";
                             }else{
@@ -113,7 +116,7 @@ export default class Player {
                                     break;
                             }
 
-                            switch( track.repeat ){
+                            switch( track.repeat_song ){
                                 case "all":
                                     this.repeatButton.text = "$(sync) All";
                                     this.repeatButton.command = "itunes.repeat.set.one";
@@ -143,6 +146,7 @@ export default class Player {
                             this.showMediaControls();
                         })
                         .catch( ( err ) => {
+                            console.log( err );
                         });
                 }else{
                     this.hideMediaControls();
@@ -172,7 +176,6 @@ export default class Player {
             status += album;
         }
         return status;
-        return `${ name } - ${ artist } - ${ album }`;
     }
 
     private updateStatusText( artist: string, name: string, album: string, kind: MediaType ) {
