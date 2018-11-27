@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.1
+### Fixed
+* Double quotes in title of a track won't be displayed
+
 ## v0.9.0
 ### Added
 * Display podcast title ([#11](https://github.com/PsykoSoldi3r/vscode-itunes/issues/11))
