@@ -16,7 +16,7 @@ export default class iTunes {
     }
 
     public getCurrentTrack(): Promise<{}> {
-        return this.executeScript("currentTrack");
+        return this.executeScript("currentTrack", false);
     }
 
     public play(): void {
@@ -67,7 +67,7 @@ export default class iTunes {
             });
     }
 
-    private executeScript( filename: string ) : Promise<{}>{
+    private executeScript( filename: string, isJson: boolean = true ) : Promise<{}>{
         return new Promise( ( resolve, reject ) => {
             let file = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
             applescript.execFile( file , ( err, result ) => {
@@ -77,8 +77,12 @@ export default class iTunes {
 
                 if( result != null ){
                     try {
-                        const parsedString = JSON.parse( result.toString() );
-                        resolve( parsedString );
+                        if( isJson === true ) {
+                            const parsedString = JSON.parse( result.toString() );
+                            resolve( parsedString );
+                        } else {
+                            resolve( result );
+                        }
                     }catch( exception ){ }
                 }else{
                     resolve({});
