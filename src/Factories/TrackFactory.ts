@@ -2,8 +2,6 @@ import ITrack, { MediaType } from "../ITrack";
 
 export default class TrackFactory {
     public static create( trackData: string ): ITrack {
-        console.log( trackData );
-
         const track: ITrack = {};
         const data = trackData.split("|");
         track.artist = data[0];
@@ -16,7 +14,6 @@ export default class TrackFactory {
         track.shuffle = data[7];
         track.repeat_song = data[8];
 
-        console.log( track );
         return track;
     }
 }
