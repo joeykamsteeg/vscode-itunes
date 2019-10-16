@@ -1,5 +1,5 @@
-if application "iTunes" is running then
-	tell application "iTunes"
+if application "__APP__" is running then
+	tell application "__APP__"
 		set itrack to artist of current track & "|"
 		set itrack to itrack & name of current track & "|"
 		set itrack to itrack & album of current track & "|"

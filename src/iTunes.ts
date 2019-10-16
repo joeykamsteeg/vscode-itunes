@@ -4,11 +4,20 @@ import { exec } from "child_process";
 import * as applescript from "applescript";
 import * as path from "path";
 import { window } from "vscode";
+import vscode = require("vscode");
+import { userInfo, platform, type, release  } from "os";
+import * as fs from "fs";
 
 export default class iTunes {
 
-    constructor(){
+    private _application = "iTunes";
 
+    constructor(){
+        const version = release();
+        const majorVersion = version.split(".")[0] || 0;
+        if( majorVersion >= 19 ){
+            this._application = "Music";
+        }
     }
 
     public getAppState(): Promise<{}> {
@@ -70,7 +79,11 @@ export default class iTunes {
     private executeScript( filename: string, isJson: boolean = true ) : Promise<{}>{
         return new Promise( ( resolve, reject ) => {
             let file = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
-            applescript.execFile( file , ( err, result ) => {
+            let fileBuffer = fs.readFileSync( file );
+            let fileStr = fileBuffer.toString();
+            let execStr = fileStr.replace(/__APP__/g, this._application );
+
+            applescript.execString( execStr, ( err, result ) => {
                 if( err ){
                     reject( err );
                 }

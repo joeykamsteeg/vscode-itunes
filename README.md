@@ -23,3 +23,4 @@ Control iTunes From Within With Visual Studio Code
 ## Requirements
 
 * System: macOS
+* Application: iTunes & Apple Music
