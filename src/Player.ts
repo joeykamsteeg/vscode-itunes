@@ -82,6 +82,7 @@ export default class Player {
                 if( app.appState === "running" ){
                     this.iTunes.getCurrentTrack()
                         .then( ( track: any ) => {
+                            console.log( track );
                             track = TrackFactory.create( track );
 
                             if( track.artist != null && track.name != null ){

@@ -1,6 +1,15 @@
 if application "__APP__" is running then
 	tell application "__APP__"
-		set itrack to {artist:artist of current track, name:name of current track, album:album of current track, kind:media kind of current track, state:player state, volume:sound volume, muted:mute, shuffle:shuffle enabled, repeat_song:song repeat}
+		set itrack to artist of current track & "|"
+		set itrack to itrack & name of current track & "|"
+		set itrack to itrack & album of current track & "|"
+		set itrack to itrack & media kind of current track & "|"
+		set itrack to itrack & player state & "|"
+		set itrack to itrack & sound volume & "|"
+		set itrack to itrack & mute & "|"
+		set itrack to itrack & shuffle enabled & "|"
+		set itrack to itrack & song repeat
+		
 		return itrack
 	end tell
 end if
