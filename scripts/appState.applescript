@@ -1,4 +1,4 @@
-if application "iTunes" is running then
+if application "__APP__" is running then
 	set payload to "{"
 	set payload to payload & "\"appState\": \"running\""
 	set payload to payload & "}"
