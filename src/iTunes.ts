@@ -83,7 +83,6 @@ export default class iTunes {
             let fileStr = fileBuffer.toString();
             let execStr = fileStr.replace(/__APP__/g, this._application );
 
-
             applescript.execString( execStr, ( err, result ) => {
                 if( err ){
                     reject( err );
