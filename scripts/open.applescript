@@ -1,1 +1,1 @@
-tell application "iTunes" to activate
+tell application "__APP__" to activate
