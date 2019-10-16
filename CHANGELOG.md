@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.11.0
+### Added
+* Apple Music Support - Catalina ([#21](https://github.com/PsykoSoldi3r/vscode-itunes/issues/21))
+
+## v0.10.0
+### Fixed
+* Songs with Double quotes does not get displayed ([#13](https://github.com/PsykoSoldi3r/vscode-itunes/issues/13))
+* Does not work with Remote Development (VS Code Insiders)([#17](https://github.com/PsykoSoldi3r/vscode-itunes/issues/17))
+* No control display ([#18](https://github.com/PsykoSoldi3r/vscode-itunes/issues/18))
+
+## v0.9.1
+### Fixed
+* Double quotes in title of a track won't be displayed
+
 ## v0.9.0
 ### Added
 * Display podcast title ([#11](https://github.com/PsykoSoldi3r/vscode-itunes/issues/11))

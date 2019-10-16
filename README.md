@@ -1,4 +1,4 @@
-# itunes-vscode README
+# Visual Studio Code - iTunes extension
 
 Control iTunes From Within With Visual Studio Code
 
@@ -23,3 +23,4 @@ Control iTunes From Within With Visual Studio Code
 ## Requirements
 
 * System: macOS
+* Application: iTunes & Apple Music
