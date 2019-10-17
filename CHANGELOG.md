@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.12.0
+### Added
+* Updated play icon
+
 ## v0.11.0
 ### Added
 * Apple Music Support - Catalina ([#21](https://github.com/PsykoSoldi3r/vscode-itunes/issues/21))
