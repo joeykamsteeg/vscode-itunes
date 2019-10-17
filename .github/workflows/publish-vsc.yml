@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
      - name: Checkout
@@ -16,7 +16,7 @@ jobs:
          npm install
      - name: Install VSCE
        run: |
-         npm install -g vsce
+         sudo npm install -g vsce
      - name: Publish
        run: |
          vsce publish -p $VSCE_TOKEN
