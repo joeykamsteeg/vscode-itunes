@@ -59,6 +59,10 @@ export function activate(context: vscode.ExtensionContext) {
         player.likeTrack();
     });
 
+    const dislikeTrack = vscode.commands.registerCommand("itunes.dislikeTrack", () => {
+        player.dislikeTrack();
+    });
+
     context.subscriptions.push( player );
     context.subscriptions.push( commandPlay );
     context.subscriptions.push( commandPause );
@@ -72,6 +76,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push( commandShuffleOn );
     context.subscriptions.push( commandShuffleOff );
     context.subscriptions.push( likeTrack );
+    context.subscriptions.push( dislikeTrack );
 }
 
 // this method is called when your extension is deactivated

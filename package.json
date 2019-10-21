@@ -67,6 +67,10 @@
             {
                 "command": "itunes.likeTrack",
                 "title": "iTunes: Like Current Track"
+            },
+            {
+                "command": "itunes.dislikeTrack",
+                "title": "iTunes: Dislike Current Track"
             }
         ],
         "configuration": [
