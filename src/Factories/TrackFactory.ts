@@ -13,6 +13,8 @@ export default class TrackFactory {
         track.muted = data[6] === "false" ? false : true;
         track.shuffle = data[7];
         track.repeat_song = data[8];
+        track.loved = data[9] === "true" ? true : false;
+        track.disliked = data[10] === "true" ? true : false;
 
         return track;
     }

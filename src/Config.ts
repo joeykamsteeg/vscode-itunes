@@ -23,4 +23,9 @@ export default class Config {
         const languageOverride = this.workspace.get("languageOverride", "en" );
         return languageOverride;
     }
+
+    getSkipTrackDislike(): boolean {
+        const skipTrackByTrackDislike = this.workspace.get("skipTrackByTrackDislike", true);
+        return skipTrackByTrackDislike;
+    }
 }
