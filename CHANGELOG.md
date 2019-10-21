@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.13.0
+### Added
+* Multilanguage Dutch and Chinese (beta)
+
 ## v0.12.0
 ### Added
 * Updated play icon
