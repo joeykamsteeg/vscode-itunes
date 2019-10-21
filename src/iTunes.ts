@@ -13,13 +13,13 @@ import Config from "./Config";
 
 export default class iTunes {
 
-    private _application = "iTunes";
+    private _application = "itunes";
 
     constructor(){
         const version = release();
         const majorVersion = version.split(".")[0] || 0;
         if( majorVersion >= 19 ){
-            this._application = "Music";
+            this._application = "music";
         }
     }
 
@@ -79,23 +79,20 @@ export default class iTunes {
             });
     }
 
-    private getScript( filename, language: string ): string {
-        const languageFile = path.resolve(__dirname, `../../scripts/${language}/${filename}.applescript`);
-        if( fs.existsSync( languageFile ) ) {
-            return fs.readFileSync( languageFile ).toString()
+    private getScript( filename, app: string = "music", language: string = "en" ): string {
+        const file = path.resolve(__dirname, `../../scripts/${app}/${language}/${filename}.applescript`);
+        if ( fs.existsSync( file ) ) {
+            return file;
         }
 
-        const defaultFile = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
-        return fs.readFileSync( defaultFile ).toString()
+        return path.resolve(__dirname, `../../scripts/${app}/en/${filename}.applescript`);
     }
 
     private executeScript( filename: string, isJson: boolean = true ) : Promise<{}>{
         return new Promise( ( resolve, reject ) => {
             const language = Config.Instance.getLanguageOverride();
-            const file = this.getScript( filename, language );
-            
-            let execStr = file.replace(/__APP__/g, this._application );
-            applescript.execString( execStr, ( err, result ) => {
+            const script = this.getScript( filename, this._application, language );
+            applescript.execFile( script, ( err, result ) => {
                 if( err ){
                     reject( err );
                 }
