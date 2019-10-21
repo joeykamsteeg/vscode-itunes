@@ -2,7 +2,7 @@
     "name": "itunes-vscode",
     "displayName": "itunes-vscode",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.12.0",
+    "version": "0.13.0",
     "publisher": "PsykoSoldi3r",
     "icon": "images/icon.png",
     "engines": {
@@ -74,6 +74,11 @@
                         "type": "number",
                         "default": 5000,
                         "description": "Interval of iTunes status check. (Higher value = lower CPU usage)"
+                    },
+                    "itunes.languageOverride": {
+                        "type": "string",
+                        "default": "en",
+                        "description": "Running language of iTunes or Apple Music. (supported: en, nl, zh)"
                     }
                 }
             }
@@ -91,7 +96,7 @@
         "@types/node": "^6.0.40",
         "mocha": "^5.2.0",
         "typescript": "^2.0.3",
-        "vscode": "^1.1.18"
+        "vscode": "^1.1.36"
     },
     "dependencies": {
         "applescript": "^1.0.0",
