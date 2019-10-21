@@ -72,17 +72,14 @@ export default class Player {
         this.stateButton = window.createStatusBarItem( StatusBarAlignment.Left, 7 + this.statusBarPositionOffset );
         this.stateButton.text = "$(mute)";
         this.stateButton.command = "itunes.volume";
-        this.stateButton.show();
 
         this.likeButton = window.createStatusBarItem( StatusBarAlignment.Left, 6 + this.statusBarPositionOffset );
         this.likeButton.text = "$(thumbsup)";
         this.likeButton.command = "itunes.likeTrack";
-        this.likeButton.show();
 
         this.dislikeButton = window.createStatusBarItem( StatusBarAlignment.Left, 5 + this.statusBarPositionOffset );
         this.dislikeButton.text = "$(thumbsdown)";
         this.dislikeButton.command = "itunes.dislikeTrack";
-        this.dislikeButton.show();
 
         this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 7 + this.statusBarPositionOffset );
         this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 8 + this.statusBarPositionOffset );
@@ -279,6 +276,8 @@ export default class Player {
         this.titleBarItem.show();
         this.stateButton.show();
         this.shuffleButton.show();
+        this.likeButton.show();
+        this.dislikeButton.show();
     }
 
     private hideMediaControls(): void {
@@ -289,6 +288,8 @@ export default class Player {
         this.titleBarItem.hide();
         this.stateButton.hide();
         this.shuffleButton.hide();
+        this.likeButton.hide();
+        this.dislikeButton.hide();
     }
 
     public volume(): void {
