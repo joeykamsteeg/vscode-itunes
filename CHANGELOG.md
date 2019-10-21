@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.14.0
+### Added
+* Like & Dislike buttons
+
 ## v0.13.0
 ### Added
 * Multilanguage Dutch and Chinese (beta)
