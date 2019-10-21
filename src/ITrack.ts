@@ -10,4 +10,6 @@ export default interface ITrack {
     shuffle?: any;
     album?: string;
     kind?: MediaType;
+    loved?: boolean;
+    disliked?: boolean;
 }

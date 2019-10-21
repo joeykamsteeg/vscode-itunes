@@ -94,18 +94,18 @@ export default class Player {
                 if( app.appState === "running" ){
                     this.iTunes.getCurrentTrack()
                         .then( ( track: any ) => {
-                            track = TrackFactory.create( track );
+                            const currentTrack: ITrack = TrackFactory.create( track );
 
-                            if( track.artist != null && track.name != null ){
-                                this.titleBarItem.text = this.getStatusText( track.artist, track.name, track.album );
+                            if( currentTrack.artist != null && currentTrack.name != null ){
+                                this.titleBarItem.text = this.getStatusText( currentTrack.artist, currentTrack.name, currentTrack.album );
 
-                                this.updateStatusText( track.artist, track.name, track.album, track.kind );
+                                this.updateStatusText( currentTrack.artist, currentTrack.name, currentTrack.album, currentTrack.kind );
 
                                 this.titleBarItem.show();
                                 this.stateButton.show();
                             }
 
-                            if( parseFloat( track.volume ) >= 1 ){
+                            if( currentTrack.volume >= 1 ){
                                 this.stateButton.text = "$(unmute)";
                                 this.stateButton.tooltip = "Mute Volume";
                             }else{
@@ -113,7 +113,7 @@ export default class Player {
                                 this.stateButton.tooltip = "Unmute Volume";
                             }
                             
-                            switch( track.state ){
+                            switch( currentTrack.state ){
                                 case "playing" :
                                     this.playerButton.text = "$(primitive-square)";
                                     this.playerButton.command = "itunes.pause";
@@ -128,7 +128,7 @@ export default class Player {
                                     break;
                             }
 
-                            switch( track.repeat_song ){
+                            switch( currentTrack.repeat_song ){
                                 case "all":
                                     this.repeatButton.text = "$(sync) All";
                                     this.repeatButton.command = "itunes.repeat.set.one";
@@ -145,7 +145,7 @@ export default class Player {
                                     break;
                             }
 
-                            if( track.shuffle === "true" ) {
+                            if( currentTrack.shuffle === "true" ) {
                                 this.shuffleButton.text = "$(git-compare) On";
                                 this.shuffleButton.command = "itunes.shuffle.off";
                                 this.shuffleButton.tooltip = "Turn Shuffle Off";
@@ -153,6 +153,18 @@ export default class Player {
                                 this.shuffleButton.text = "$(git-compare) Off";
                                 this.shuffleButton.command = "itunes.shuffle.on";
                                 this.shuffleButton.tooltip = "Turn Shuffle On";
+                            }
+
+                            if( currentTrack.loved === true ) {
+                                this.likeButton.text = "$(thumbsup) $(check)";
+                            } else {
+                                this.likeButton.text = "$(thumbsup)";
+                            }
+
+                            if( currentTrack.disliked === true ) {
+                                this.dislikeButton.text = "$(thumbsdown) $(check)";
+                            } else {
+                                this.dislikeButton.text = "$(thumbsdown)";
                             }
 
                             this.showMediaControls();
