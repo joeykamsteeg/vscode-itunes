@@ -74,6 +74,11 @@
                         "type": "number",
                         "default": 5000,
                         "description": "Interval of iTunes status check. (Higher value = lower CPU usage)"
+                    },
+                    "itunes.languageOverride": {
+                        "type": "string",
+                        "default": "en",
+                        "description": "Running language of iTunes or Apple Music. (supported: en, nl, zh)"
                     }
                 }
             }

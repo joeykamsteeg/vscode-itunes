@@ -1,1 +1,0 @@
-tell application "__APP__" to activate

@@ -5,18 +5,21 @@ import * as applescript from "applescript";
 import * as path from "path";
 import { window } from "vscode";
 import vscode = require("vscode");
-import { userInfo, platform, type, release  } from "os";
+import { release, userInfo } from "os";
+import { env } from "process";
+import * as os from "os";
 import * as fs from "fs";
+import Config from "./Config";
 
 export default class iTunes {
 
-    private _application = "iTunes";
+    private _application = "itunes";
 
     constructor(){
         const version = release();
         const majorVersion = version.split(".")[0] || 0;
         if( majorVersion >= 19 ){
-            this._application = "Music";
+            this._application = "music";
         }
     }
 
@@ -76,14 +79,20 @@ export default class iTunes {
             });
     }
 
+    private getScript( filename, app: string = "music", language: string = "en" ): string {
+        const file = path.resolve(__dirname, `../../scripts/${app}/${language}/${filename}.applescript`);
+        if ( fs.existsSync( file ) ) {
+            return file;
+        }
+
+        return path.resolve(__dirname, `../../scripts/${app}/en/${filename}.applescript`);
+    }
+
     private executeScript( filename: string, isJson: boolean = true ) : Promise<{}>{
         return new Promise( ( resolve, reject ) => {
-            let file = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
-            let fileBuffer = fs.readFileSync( file );
-            let fileStr = fileBuffer.toString();
-            let execStr = fileStr.replace(/__APP__/g, this._application );
-
-            applescript.execString( execStr, ( err, result ) => {
+            const language = Config.Instance.getLanguageOverride();
+            const script = this.getScript( filename, this._application, language );
+            applescript.execFile( script, ( err, result ) => {
                 if( err ){
                     reject( err );
                 }
