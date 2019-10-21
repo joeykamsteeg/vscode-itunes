@@ -78,7 +78,7 @@
                     "itunes.languageOverride": {
                         "type": "string",
                         "default": "en",
-                        "description": "Running language of iTunes or Apple Music."
+                        "description": "Running language of iTunes or Apple Music. (supported: en, nl, zh)"
                     }
                 }
             }
