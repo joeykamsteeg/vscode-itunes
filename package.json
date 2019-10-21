@@ -63,6 +63,10 @@
             {
                 "command": "itunes.shuffle.off",
                 "title": "iTunes: Set Shuffle - Off"
+            },
+            {
+                "command": "itunes.likeTrack",
+                "title": "iTunes: Like Current Track"
             }
         ],
         "configuration": [
@@ -79,6 +83,11 @@
                         "type": "string",
                         "default": "en",
                         "description": "Running language of iTunes or Apple Music. (supported: en, nl, zh)"
+                    },
+                    "itunes.skipTrackByTrackDislike": {
+                        "type": "boolean",
+                        "default": "en",
+                        "description": "Skip track after disliking the track?"
                     }
                 }
             }

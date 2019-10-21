@@ -58,6 +58,10 @@ export default class iTunes {
     public mute(): void {
         this.executeScript("mute");
     }
+
+    public like(): void {
+        this.executeScript("likeTrack");
+    }
     
     public shuffle( enable: boolean ): void {
         if( enable === true ) {

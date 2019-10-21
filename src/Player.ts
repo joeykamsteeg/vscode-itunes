@@ -19,6 +19,7 @@ export default class Player {
     private updateInterval: NodeJS.Timer;
     private repeatButton: StatusBarItem = null;
     private shuffleButton: StatusBarItem = null;
+    private likeButton: StatusBarItem = null;
 
     private statusBarPositionOffset: number = 10;
     
@@ -72,8 +73,13 @@ export default class Player {
         this.stateButton.command = "itunes.volume";
         this.stateButton.show();
 
-        this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 6 + this.statusBarPositionOffset );
-        this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 5 + this.statusBarPositionOffset );
+        this.likeButton = window.createStatusBarItem( StatusBarAlignment.Left, 5 + this.statusBarPositionOffset );
+        this.likeButton.text = "$(thumbsup)";
+        this.likeButton.command = "itunes.likeTrack";
+        this.likeButton.show();
+
+        this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 6 + this.statusBarPositionOffset );
+        this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 7 + this.statusBarPositionOffset );
     }
 
     private updateStatusBarItem(){
@@ -273,5 +279,9 @@ export default class Player {
         }else{
             this.iTunes.mute();
         }
+    }
+
+    public likeTrack(): void {
+        this.iTunes.like();
     }
 }
