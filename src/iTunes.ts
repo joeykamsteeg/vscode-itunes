@@ -5,8 +5,11 @@ import * as applescript from "applescript";
 import * as path from "path";
 import { window } from "vscode";
 import vscode = require("vscode");
-import { userInfo, platform, type, release  } from "os";
+import { release, userInfo } from "os";
+import { env } from "process";
+import * as os from "os";
 import * as fs from "fs";
+import Config from "./Config";
 
 export default class iTunes {
 
@@ -76,13 +79,22 @@ export default class iTunes {
             });
     }
 
+    private getScript( filename, language: string ): string {
+        const languageFile = path.resolve(__dirname, `../../scripts/${language}/${filename}.applescript`);
+        if( fs.existsSync( languageFile ) ) {
+            return fs.readFileSync( languageFile ).toString()
+        }
+
+        const defaultFile = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
+        return fs.readFileSync( defaultFile ).toString()
+    }
+
     private executeScript( filename: string, isJson: boolean = true ) : Promise<{}>{
         return new Promise( ( resolve, reject ) => {
-            let file = path.resolve(__dirname, `../../scripts/${filename}.applescript`);
-            let fileBuffer = fs.readFileSync( file );
-            let fileStr = fileBuffer.toString();
-            let execStr = fileStr.replace(/__APP__/g, this._application );
-
+            const language = Config.Instance.getLanguageOverride();
+            const file = this.getScript( filename, language );
+            
+            let execStr = file.replace(/__APP__/g, this._application );
             applescript.execString( execStr, ( err, result ) => {
                 if( err ){
                     reject( err );

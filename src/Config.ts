@@ -18,4 +18,9 @@ export default class Config {
         
         return interval;
     }
+
+    getLanguageOverride(){
+        const languageOverride = this.workspace.get("languageOverride", "en" );
+        return languageOverride;
+    }
 }
