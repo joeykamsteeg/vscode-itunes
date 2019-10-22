@@ -92,6 +92,11 @@
                         "type": "boolean",
                         "default": "en",
                         "description": "Skip track after disliking the track?"
+                    },
+                    "itunes.titleStringLimit": {
+                        "type": "number",
+                        "default": 0,
+                        "description": "Max display length of track title (disable = 0)"
                     }
                 }
             }
