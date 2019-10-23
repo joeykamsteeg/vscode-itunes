@@ -96,7 +96,7 @@
                     "itunes.titleStringLimit": {
                         "type": "number",
                         "default": 64,
-                        "description": "Max display length of track title (disable = 0)"
+                        "description": "Max display length of track artist & title (disable = 0)"
                     }
                 }
             }
