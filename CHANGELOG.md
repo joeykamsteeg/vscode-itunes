@@ -1,8 +1,12 @@
 # Changelog
 
+## v0.14.2
+### Fixed
+* Fixed issues with Dutch Apple Scripts
+
 ## v0.14.1
 ### Fixed
-* AppleScript execution with special characters
+* Fixed issues with Chinese Apple Scripts
 
 ## v0.14.0
 ### Added
