@@ -1,6 +1,6 @@
-# Visual Studio Code - iTunes extension
+# Visual Studio Code - iTunes & Apple Music Player
 
-Control iTunes From Within With Visual Studio Code
+Control iTunes or Apple Music From Within With Visual Studio Code
 
 ![](https://raw.githubusercontent.com/PsykoSoldi3r/vscode-itunes/master/images/screenshot-03.png)
 
@@ -18,7 +18,16 @@ Control iTunes From Within With Visual Studio Code
     * Mute/Unmute Volume
     * Set Repeat Mode: One, All or Off
     * Toggle Shuffle
+    * Like & Dislike 
 
+## Language Support
+
+Following languages are supported. Can be set in the settings of Visual Studio Code
+* English (en), default
+* Chinese (zh)
+* Dutch (nl)
+
+Your language not supported? Please submit a new issue with the translated AppleScripts: `repeatSetAll`, `repeatSetOff`, `repeatSetOne`, `shuffleOff`, `shuffleOn`
 
 ## Requirements
 

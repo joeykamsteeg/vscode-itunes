@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.15.0
+### Added
+* Added a maximun length of artist and title text. This can be changed in the settings of Visual Studio Code. The default is 64. To turn it off, set the length to 0.
+
 ## v0.14.2
 ### Fixed
 * Fixed issues with Dutch Apple Scripts
