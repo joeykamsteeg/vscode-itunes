@@ -18,6 +18,7 @@ Control iTunes From Within With Visual Studio Code
     * Mute/Unmute Volume
     * Set Repeat Mode: One, All or Off
     * Toggle Shuffle
+    * Like & Dislike 
 
 
 ## Requirements
