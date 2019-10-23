@@ -1,6 +1,6 @@
 {
     "name": "itunes-vscode",
-    "displayName": "itunes-vscode",
+    "displayName": "iTunes & Apple Music Player",
     "description": "Control iTunes from within Visual Studio Code!",
     "version": "0.14.2",
     "publisher": "PsykoSoldi3r",
