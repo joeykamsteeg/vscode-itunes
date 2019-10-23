@@ -2,7 +2,7 @@
     "name": "itunes-vscode",
     "displayName": "itunes-vscode",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.14.1",
+    "version": "0.14.2",
     "publisher": "PsykoSoldi3r",
     "icon": "images/icon.png",
     "engines": {
