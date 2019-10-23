@@ -20,6 +20,14 @@ Control iTunes From Within With Visual Studio Code
     * Toggle Shuffle
     * Like & Dislike 
 
+## Language Support
+
+Following languages are supported. Can be set in the settings of Visual Studio Code
+* English (en), default
+* Chinese (zh)
+* Dutch (nl)
+
+Your language not supported? Please submit a new issue with the translated AppleScripts: `repeatSetAll`, `repeatSetOff`, `repeatSetOne`, `shuffleOff`, `shuffleOn`
 
 ## Requirements
 
