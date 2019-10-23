@@ -27,13 +27,12 @@ export default class Player {
     constructor() {
         Player.Instance = this;
 
+        this.onUpdate = this.onUpdate.bind( this );
+
         this.iTunes = new iTunes();
 
         this.createStatusBarItem();
-
-        this.onUpdate = this.onUpdate.bind( this );
         this.updateInterval = setInterval( this.onUpdate, Config.Instance.getStatusCheckInterval() );
-
         this.updateStatusBarItem();
     }
 
@@ -94,8 +93,6 @@ export default class Player {
                             const currentTrack: ITrack = TrackFactory.create( track );
 
                             if( currentTrack.artist != null && currentTrack.name != null ){
-                                this.titleBarItem.text = this.getStatusText( currentTrack.artist, currentTrack.name, currentTrack.album );
-
                                 this.updateStatusText( currentTrack.artist, currentTrack.name, currentTrack.album, currentTrack.kind );
 
                                 this.titleBarItem.show();
@@ -175,60 +172,22 @@ export default class Player {
             });
     }
 
-    private getStatusText( artist: string, name: string, album: string ): string {
-        let status = ""; 
-        if( name.length > 0 ) {
-            status += name;
-        }
-
-        if( artist.length > 0 ) {
-            if( status.length > 0 ){
-                status += " - ";
-            }
-
-            status += artist;
-        }
-
-        if( album.length > 0 && artist !== album ) {
-            if( status.length > 0 ){
-                status += " - ";
-            }
-
-            status += album;
-        }
-        return status;
-    }
-
     private updateStatusText( artist: string, name: string, album: string, kind: MediaType ) {
-        this.titleBarItem.show();
-        this.artistBarItem.show();
-        this.albumBarItem.show();
+        const title = `${name} - ${artist} — ${album}`;
+        const titleStringLimit = Config.Instance.getTitleStringLimit();
+        let displayedTitle = title;
 
-        const albumText = ( name.length > 0 || artist.length > 0 ) ? `-     ${album}` : album;
-        
-        this.titleBarItem.text = name;
-        this.albumBarItem.text = albumText;
-        this.artistBarItem.text = name.length > 0 ? `-     ${artist}` : artist;
-
-        if( kind !== "podcast" ) {
-            this.albumBarItem.hide();
+        if( titleStringLimit > 0 ) {
+            displayedTitle = title.substr(0, titleStringLimit);
+            if( displayedTitle.length < title.length ) {
+                displayedTitle += "...";
+            }
         }
 
-        if( name.length === 0 ) {
-            this.titleBarItem.hide();
-        }
+        this.titleBarItem.text = displayedTitle;
+        this.titleBarItem.tooltip = title;
 
-        if( album.length=== 0 ) {
-            this.albumBarItem.hide();
-        }
-
-        if( artist.length === 0 ) {
-            this.artistBarItem.hide();
-        }
-
-        if( artist === album ) {
-            this.albumBarItem.hide();
-        }
+        this.titleBarItem.show();        
     }
 
     public open(): void {
