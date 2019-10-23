@@ -28,4 +28,9 @@ export default class Config {
         const skipTrackByTrackDislike = this.workspace.get("skipTrackByTrackDislike", true);
         return skipTrackByTrackDislike;
     }
+
+    getTitleStringLimit(): number {
+        const titleStringLimit = this.workspace.get("titleStringLimit", 0);
+        return titleStringLimit;
+    }
 }
