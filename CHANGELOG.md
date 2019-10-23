@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.14.1
+### Fixed
+* AppleScript execution with special characters
+
 ## v0.14.0
 ### Added
 * Like & Dislike buttons
