@@ -10,8 +10,6 @@ export default class Player {
 
     private iTunes: iTunes;
     private titleBarItem: StatusBarItem = null;
-    private artistBarItem: StatusBarItem = null;
-    private albumBarItem: StatusBarItem = null;
     private playerButton: StatusBarItem = null;
     private previousTrackButton: StatusBarItem = null;
     private nextTrackButton: StatusBarItem = null;
@@ -42,32 +40,29 @@ export default class Player {
     }
 
     private createStatusBarItem(){
-        this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 13 + this.statusBarPositionOffset );
+        this.previousTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 14 + this.statusBarPositionOffset );
         this.previousTrackButton.text = "$(chevron-left)";
         this.previousTrackButton.command = "itunes.previousTrack";
         this.previousTrackButton.tooltip = "Play Previous Track";
 
-        this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left, 12 + this.statusBarPositionOffset );
+        this.playerButton = window.createStatusBarItem( StatusBarAlignment.Left, 13 + this.statusBarPositionOffset );
 
-        this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 11 + this.statusBarPositionOffset );
+        this.nextTrackButton = window.createStatusBarItem( StatusBarAlignment.Left, 12 + this.statusBarPositionOffset );
         this.nextTrackButton.text = "$(chevron-right)";
         this.nextTrackButton.command = "itunes.nextTrack";
         this.nextTrackButton.tooltip = "Play Next Track";
 
-        this.artistBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 9 + this.statusBarPositionOffset );
-        this.artistBarItem.command = "itunes.open";
-        this.artistBarItem.tooltip = "Show iTunes";
-        this.artistBarItem.show();
+        this.addToLibrayButton = window.createStatusBarItem( StatusBarAlignment.Left, 11 + this.statusBarPositionOffset );
+        this.addToLibrayButton.text = "$(file-add)";
+        this.addToLibrayButton.command = "itunes.addTrack";
 
         this.titleBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 10 + this.statusBarPositionOffset );
         this.titleBarItem.command = "itunes.open";
         this.titleBarItem.tooltip = "Show iTunes";
         this.titleBarItem.show();
-
-        this.albumBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 8 + this.statusBarPositionOffset );
-        this.albumBarItem.command = "itunes.open";
-        this.albumBarItem.tooltip = "Show iTunes";
-        this.albumBarItem.show();
+        
+        this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 9 + this.statusBarPositionOffset );
+        this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 8 + this.statusBarPositionOffset );
 
         this.stateButton = window.createStatusBarItem( StatusBarAlignment.Left, 7 + this.statusBarPositionOffset );
         this.stateButton.text = "$(mute)";
@@ -80,13 +75,6 @@ export default class Player {
         this.dislikeButton = window.createStatusBarItem( StatusBarAlignment.Left, 5 + this.statusBarPositionOffset );
         this.dislikeButton.text = "$(thumbsdown)";
         this.dislikeButton.command = "itunes.dislikeTrack";
-
-        this.addToLibrayButton = window.createStatusBarItem( StatusBarAlignment.Left, 4 + this.statusBarPositionOffset );
-        this.addToLibrayButton.text = "$(file-add) Library";
-        this.addToLibrayButton.command = "itunes.addTrack";
-
-        this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 7 + this.statusBarPositionOffset );
-        this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 8 + this.statusBarPositionOffset );
     }
 
     private updateStatusBarItem(){
