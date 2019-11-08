@@ -21,6 +21,7 @@ export default class Player {
     private shuffleButton: StatusBarItem = null;
     private likeButton: StatusBarItem = null;
     private dislikeButton: StatusBarItem = null;
+    private addToLibrayButton: StatusBarItem = null;
 
     private statusBarPositionOffset: number = 10;
     
@@ -79,6 +80,10 @@ export default class Player {
         this.dislikeButton = window.createStatusBarItem( StatusBarAlignment.Left, 5 + this.statusBarPositionOffset );
         this.dislikeButton.text = "$(thumbsdown)";
         this.dislikeButton.command = "itunes.dislikeTrack";
+
+        this.addToLibrayButton = window.createStatusBarItem( StatusBarAlignment.Left, 4 + this.statusBarPositionOffset );
+        this.addToLibrayButton.text = "$(file-add) Library";
+        this.addToLibrayButton.command = "itunes.addTrack";
 
         this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 7 + this.statusBarPositionOffset );
         this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 8 + this.statusBarPositionOffset );
@@ -218,6 +223,10 @@ export default class Player {
         this.iTunes.shuffle( false );
     }
 
+    public addTrack(): void {
+        this.iTunes.addTrack();
+    }
+
     public setRepeat( repeat: string ): void {
         this.iTunes.setRepeat( repeat );
     }
@@ -237,6 +246,7 @@ export default class Player {
         this.shuffleButton.show();
         this.likeButton.show();
         this.dislikeButton.show();
+        this.addToLibrayButton.show();
     }
 
     private hideMediaControls(): void {
@@ -249,6 +259,7 @@ export default class Player {
         this.shuffleButton.hide();
         this.likeButton.hide();
         this.dislikeButton.hide();
+        this.addToLibrayButton.hide();
     }
 
     public volume(): void {

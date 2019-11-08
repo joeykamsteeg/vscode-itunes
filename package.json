@@ -22,55 +22,59 @@
         "commands": [
             {
                 "command": "itunes.pause",
-                "title": "iTunes: Pause"
+                "title": "iTunes & Apple Music: Pause"
             },
             {
                 "command": "itunes.play",
-                "title": "iTunes: Play"
+                "title": "iTunes & Apple Music: Play"
             },
             {
                 "command": "itunes.nextTrack",
-                "title": "iTunes: Next Track"
+                "title": "iTunes & Apple Music: Next Track"
             },
             {
                 "command": "itunes.previousTrack",
-                "title": "iTunes: Previous Track"
+                "title": "iTunes & Apple Music: Previous Track"
             },
             {
                 "command": "itunes.open",
-                "title": "iTunes: Show"
+                "title": "iTunes & Apple Music: Show"
             },
             {
                 "command": "itunes.repeat.set.one",
-                "title": "iTunes: Set Repeat - One"
+                "title": "iTunes & Apple Music: Set Repeat - One"
             },
             {
                 "command": "itunes.repeat.set.all",
-                "title": "iTunes: Set Repeat - All"
+                "title": "iTunes & Apple Music: Set Repeat - All"
             },
             {
                 "command": "itunes.repeat.set.off",
-                "title": "iTunes: Set Repeat - Off"
+                "title": "iTunes & Apple Music: Set Repeat - Off"
             },
             {
                 "command": "itunes.volume",
-                "title": "iTunes: Mute/Unmute"
+                "title": "iTunes & Apple Music: Mute/Unmute"
             },
             {
                 "command": "itunes.shuffle.on",
-                "title": "iTunes: Set Shuffle - On"
+                "title": "iTunes & Apple Music: Set Shuffle - On"
             },
             {
                 "command": "itunes.shuffle.off",
-                "title": "iTunes: Set Shuffle - Off"
+                "title": "iTunes & Apple Music: Set Shuffle - Off"
             },
             {
                 "command": "itunes.likeTrack",
-                "title": "iTunes: Like Current Track"
+                "title": "iTunes & Apple Music: Like Current Track"
             },
             {
                 "command": "itunes.dislikeTrack",
-                "title": "iTunes: Dislike Current Track"
+                "title": "iTunes & Apple Music: Dislike Current Track"
+            },
+            {
+                "command": "itunes.addTrack",
+                "title": "iTunes & Apple Music: Add track to your master library"
             }
         ],
         "configuration": [

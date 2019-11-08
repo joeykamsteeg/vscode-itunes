@@ -79,6 +79,10 @@ export default class iTunes {
         }
     }
 
+    public addTrack(): void {
+        this.executeScript("addToLibrary");
+    }
+
     public setRepeat( repeat: string ): void {
         this.executeScript(`repeatSet${repeat}`)
             .then( ( result ) => {
