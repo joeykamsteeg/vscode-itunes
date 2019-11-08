@@ -1,4 +1,7 @@
 # Changelog
+## v0.16.0
+### Added
+* Able to add the current playing track to your iTunes/Apple Music library.
 
 ## v0.15.0
 ### Added
