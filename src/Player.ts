@@ -55,6 +55,7 @@ export default class Player {
         this.addToLibrayButton = window.createStatusBarItem( StatusBarAlignment.Left, 11 + this.statusBarPositionOffset );
         this.addToLibrayButton.text = "$(file-add)";
         this.addToLibrayButton.command = "itunes.addTrack";
+        this.addToLibrayButton.tooltip = "Add current playing to track to your iTunes/Apple Music master library."
 
         this.titleBarItem = window.createStatusBarItem( StatusBarAlignment.Left, 10 + this.statusBarPositionOffset );
         this.titleBarItem.command = "itunes.open";
