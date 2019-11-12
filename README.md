@@ -19,6 +19,7 @@ Control iTunes or Apple Music From Within With Visual Studio Code
     * Set Repeat Mode: One, All or Off
     * Toggle Shuffle
     * Like & Dislike 
+    * Add To Library
 
 ## Language Support
 
