@@ -1,4 +1,9 @@
 # Changelog
+
+## v0.16.1
+### Fixed
+* Wrong icon of button 'add the current playing track to library'.
+
 ## v0.16.0
 ### Added
 * Able to add the current playing track to your iTunes/Apple Music library.
