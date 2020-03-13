@@ -2,7 +2,7 @@
     "name": "itunes-vscode",
     "displayName": "iTunes & Apple Music Player",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.16.2",
+    "version": "0.16.3",
     "publisher": "PsykoSoldi3r",
     "icon": "images/icon.png",
     "engines": {
