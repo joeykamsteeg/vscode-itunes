@@ -2,6 +2,10 @@ import ITrack, { MediaType } from "../ITrack";
 
 export default class TrackFactory {
     public static create( trackData: string ): ITrack {
+        if( trackData == null ) {
+            return {};
+        }
+
         const track: ITrack = {};
         const data = trackData.split("|");
         track.artist = data[0];
