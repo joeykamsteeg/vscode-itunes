@@ -15,7 +15,7 @@ export default class Config {
         if( interval < 1000 ){
             return 1000;
         }
-        
+
         return interval;
     }
 
@@ -32,5 +32,10 @@ export default class Config {
     getTitleStringLimit(): number {
         const titleStringLimit = this.workspace.get("titleStringLimit", 0);
         return titleStringLimit;
+    }
+
+    getShowMediaControls(): boolean {
+        const showControls = this.workspace.get("showMediaControls", true)
+        return showControls;
     }
 }

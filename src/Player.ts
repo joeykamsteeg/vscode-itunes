@@ -20,9 +20,10 @@ export default class Player {
     private likeButton: StatusBarItem = null;
     private dislikeButton: StatusBarItem = null;
     private addToLibrayButton: StatusBarItem = null;
+    private lastControlsShown: Boolean = true;
 
     private statusBarPositionOffset: number = 10;
-    
+
     constructor() {
         Player.Instance = this;
 
@@ -61,7 +62,7 @@ export default class Player {
         this.titleBarItem.command = "itunes.open";
         this.titleBarItem.tooltip = "Show iTunes";
         this.titleBarItem.show();
-        
+
         this.repeatButton = window.createStatusBarItem( StatusBarAlignment.Left, 9 + this.statusBarPositionOffset );
         this.shuffleButton = window.createStatusBarItem( StatusBarAlignment.Left, 8 + this.statusBarPositionOffset );
 
@@ -100,14 +101,14 @@ export default class Player {
                                 this.stateButton.text = "$(mute)";
                                 this.stateButton.tooltip = "Unmute Volume";
                             }
-                            
+
                             switch( currentTrack.state ){
                                 case "playing" :
                                     this.playerButton.text = "$(primitive-square)";
                                     this.playerButton.command = "itunes.pause";
                                     this.playerButton.tooltip = "Pause Track";
                                     break;
-                                
+
                                 case "paused" :
                                 case "stopped" :
                                     this.playerButton.text = "$(play)";
@@ -155,7 +156,7 @@ export default class Player {
                                 this.dislikeButton.text = "$(thumbsdown)";
                             }
 
-                            this.showMediaControls();
+                            this.showMediaControls(!Config.Instance.getShowMediaControls());
                         })
                         .catch( ( err ) => {
                             console.log( err );
@@ -181,7 +182,7 @@ export default class Player {
         this.titleBarItem.text = displayedTitle;
         this.titleBarItem.tooltip = title;
 
-        this.titleBarItem.show();        
+        this.titleBarItem.show();
     }
 
     public open(): void {
@@ -225,17 +226,27 @@ export default class Player {
         clearInterval( this.updateInterval );
     }
 
-    private showMediaControls(): void {
-        this.previousTrackButton.show();
-        this.playerButton.show();
-        this.nextTrackButton.show();
-        this.repeatButton.show();
-        this.titleBarItem.show();
-        this.stateButton.show();
-        this.shuffleButton.show();
-        this.likeButton.show();
-        this.dislikeButton.show();
-        this.addToLibrayButton.show();
+    private showMediaControls(titleOnly: boolean): void {
+        if (!titleOnly) {
+            this.previousTrackButton.show();
+            this.playerButton.show();
+            this.nextTrackButton.show();
+            this.repeatButton.show();
+            this.titleBarItem.show();
+            this.stateButton.show();
+            this.shuffleButton.show();
+            this.likeButton.show();
+            this.dislikeButton.show();
+            this.addToLibrayButton.show();
+        } else {
+            // Avoids flicker
+            if (this.lastControlsShown)
+                this.hideMediaControls();
+
+            this.titleBarItem.show();
+        }
+
+        this.lastControlsShown = !titleOnly;
     }
 
     private hideMediaControls(): void {

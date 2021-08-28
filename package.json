@@ -101,6 +101,11 @@
                         "type": "number",
                         "default": 64,
                         "description": "Max display length of track artist & title (disable = 0)"
+                    },
+                    "itunes.showMediaControls": {
+                        "type": "boolean",
+                        "default": "en",
+                        "description": "Show media controls in addition to currently playing."
                     }
                 }
             }
@@ -118,7 +123,7 @@
         "@types/node": "^6.0.40",
         "mocha": "^5.2.0",
         "typescript": "^2.0.3",
-        "vscode": "^1.1.36"
+        "vscode": "^1.1.37"
     },
     "dependencies": {
         "applescript": "^1.0.0",
