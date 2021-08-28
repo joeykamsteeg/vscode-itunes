@@ -35,7 +35,37 @@ export default class Config {
     }
 
     getShowMediaControls(): boolean {
-        const showControls = this.workspace.get("showMediaControls", true)
+        const showControls = this.workspace.get("showMediaControls", true);
         return showControls;
+    }
+
+    getShowAdd(): boolean {
+        const showAdd = this.workspace.get("showAdd", true);
+        return showAdd;
+    }
+
+    getShowTrack(): boolean {
+        const showTrack = this.workspace.get("showTrack", true);
+        return showTrack;
+    }
+
+    getTrackFormat(): string {
+        const trackFormat = this.workspace.get("trackFormat", "{name} - {artist} — {album}");
+        return trackFormat;
+    }
+
+    getShowLoopShuffle(): boolean {
+        const showLS = this.workspace.get("showLoopShuffle", true);
+        return showLS;
+    }
+
+    getShowMute(): boolean {
+        const showMute = this.workspace.get("showMute", true);
+        return showMute;
+    }
+
+    getShowLikeDislike(): boolean {
+        const showLD = this.workspace.get("showLikeDislike", true);
+        return showLD;
     }
 }

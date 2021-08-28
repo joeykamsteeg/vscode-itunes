@@ -1,4 +1,4 @@
-import { window, StatusBarAlignment, StatusBarItem } from "vscode";
+import { window, StatusBarAlignment, StatusBarItem, workspace } from "vscode";
 import iTunes from "./iTunes";
 import ITrack, { MediaType } from "./ITrack";
 import Config from "./Config";
@@ -20,7 +20,6 @@ export default class Player {
     private likeButton: StatusBarItem = null;
     private dislikeButton: StatusBarItem = null;
     private addToLibrayButton: StatusBarItem = null;
-    private lastControlsShown: Boolean = true;
 
     private statusBarPositionOffset: number = 10;
 
@@ -34,6 +33,14 @@ export default class Player {
         this.createStatusBarItem();
         this.updateInterval = setInterval( this.onUpdate, Config.Instance.getStatusCheckInterval() );
         this.updateStatusBarItem();
+
+        // Reset on settings change
+        workspace.onDidChangeConfiguration(e => {
+            Config.Instance = new Config()
+            this.updateInterval = setInterval( this.onUpdate, Config.Instance.getStatusCheckInterval() );
+            this.hideMediaControls();
+            this.showMediaControls();
+        });
     }
 
     private onUpdate(){
@@ -91,7 +98,9 @@ export default class Player {
                                 this.updateStatusText( currentTrack.artist, currentTrack.name, currentTrack.album, currentTrack.kind );
 
                                 this.titleBarItem.show();
-                                this.stateButton.show();
+
+                                if (Config.Instance.getShowMute())
+                                    this.stateButton.show();
                             }
 
                             if( currentTrack.volume >= 1 ){
@@ -156,7 +165,7 @@ export default class Player {
                                 this.dislikeButton.text = "$(thumbsdown)";
                             }
 
-                            this.showMediaControls(!Config.Instance.getShowMediaControls());
+                            this.showMediaControls();
                         })
                         .catch( ( err ) => {
                             console.log( err );
@@ -168,8 +177,11 @@ export default class Player {
     }
 
     private updateStatusText( artist: string, name: string, album: string, kind: MediaType ) {
-        const title = `${name} - ${artist} — ${album}`;
         const titleStringLimit = Config.Instance.getTitleStringLimit();
+        const title = Config.Instance.getTrackFormat().replace("{name}", name)
+                                                      .replace("{artist}", artist)
+                                                      .replace("{album}", album);
+
         let displayedTitle = title;
 
         if( titleStringLimit > 0 ) {
@@ -208,7 +220,7 @@ export default class Player {
     public shuffleOn(): void {
         this.iTunes.shuffle( true );
     }
-    
+
     public shuffleOff(): void {
         this.iTunes.shuffle( false );
     }
@@ -226,27 +238,29 @@ export default class Player {
         clearInterval( this.updateInterval );
     }
 
-    private showMediaControls(titleOnly: boolean): void {
-        if (!titleOnly) {
+    private showMediaControls(): void {
+        if (Config.Instance.getShowMediaControls()) {
             this.previousTrackButton.show();
             this.playerButton.show();
             this.nextTrackButton.show();
+        }
+        if (Config.Instance.getShowLoopShuffle()) {
             this.repeatButton.show();
-            this.titleBarItem.show();
-            this.stateButton.show();
             this.shuffleButton.show();
-            this.likeButton.show();
-            this.dislikeButton.show();
-            this.addToLibrayButton.show();
-        } else {
-            // Avoids flicker
-            if (this.lastControlsShown)
-                this.hideMediaControls();
-
+        }
+        if (Config.Instance.getShowTrack()) {
             this.titleBarItem.show();
         }
-
-        this.lastControlsShown = !titleOnly;
+        if (Config.Instance.getShowMute()) {
+            this.stateButton.show();
+        }
+        if (Config.Instance.getShowLikeDislike()) {
+            this.likeButton.show();
+            this.dislikeButton.show();
+        }
+        if (Config.Instance.getShowAdd()) {
+            this.addToLibrayButton.show();
+        }
     }
 
     private hideMediaControls(): void {

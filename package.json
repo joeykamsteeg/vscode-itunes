@@ -104,8 +104,39 @@
                     },
                     "itunes.showMediaControls": {
                         "type": "boolean",
-                        "default": "en",
-                        "description": "Show media controls in addition to currently playing."
+                        "default": true,
+                        "description": "Show back, next, and play / pause button?"
+                    },
+                    "itunes.showAdd": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Show add to library button?"
+                    },
+                    "itunes.showTrack": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Show currently playing track?"
+                    },
+                    "itunes.trackFormat": {
+                        "type": "string",
+                        "default": "{name} - {artist} — {album}",
+                        "description": "Format of track title.\n - {name} Will be replaced by track name\n - {artist} Will be replaced by artist\n - {album} Will be replaced by ablum title"
+                    },
+                    "itunes.showLoopShuffle": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Show loop and shuffle buttons?"
+                    },
+                    "itunes.showMute": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Show mute button?"
+                    },
+                    "itunes.showLikeDislike": {
+                        "title": "Show like / dislike",
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Show like and dislike buttons?"
                     }
                 }
             }
