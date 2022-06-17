@@ -1,8 +1,10 @@
 # Visual Studio Code - iTunes & Apple Music Player
 
-Control iTunes or Apple Music From Within With Visual Studio Code
+Control iTunes or Apple Music From Within With Visual Studio Code.
 
-![](https://raw.githubusercontent.com/PsykoSoldi3r/vscode-itunes/master/images/screenshot-03.png)
+This is a fork of the original from [PsykoSoldi3r](https://github.com/PsykoSoldi3r/vscode-itunes), as the project appears to have been abandoned. This version adds many settings and custom formatting options.
+
+![](https://raw.githubusercontent.com/dnedry2/vscode-itunes/master/images/screenshot-03.png)
 
 ## Features
 

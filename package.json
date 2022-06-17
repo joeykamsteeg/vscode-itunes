@@ -1,21 +1,21 @@
 {
-    "name": "itunes-vscode",
+    "name": "applemusic-vscode",
     "displayName": "iTunes & Apple Music Player",
     "description": "Control iTunes from within Visual Studio Code!",
-    "version": "0.16.5",
-    "publisher": "PsykoSoldi3r",
+    "version": "0.17.0",
+    "publisher": "dnedry2",
     "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.5.0"
     },
     "repository": {
-        "url": "https://github.com/PsykoSoldi3r/vscode-itunes"
+        "url": "https://github.com/dnedry2/vscode-itunes"
     },
     "categories": [
         "Other"
     ],
     "activationEvents": [
-        "*"
+        "onStartupFinished"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -142,7 +142,7 @@
             }
         ]
     },
-    "extensionKind": "ui",
+    "extensionKind": ["ui"],
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
         "compile": "tsc -watch -p ./",

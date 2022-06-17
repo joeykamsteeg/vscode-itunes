@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.17.0
+### Forked
+
+### Added
+* Visibility settings for all controls
+* Custom title formatting
+
 ## v0.16.1
 ### Fixed
 * Wrong icon of button 'add the current playing track to library'.
