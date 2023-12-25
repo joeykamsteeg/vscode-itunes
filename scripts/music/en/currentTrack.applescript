@@ -9,7 +9,7 @@ if application "Music" is running then
 		set itrack to itrack & mute & "|"
 		set itrack to itrack & shuffle enabled & "|"
 		set itrack to itrack & song repeat & "|"
-		set itrack to itrack & loved of current track & "|"
+		set itrack to itrack & favorited of current track & "|"
 		set itrack to itrack & disliked of current track
 		return itrack
 	end tell
